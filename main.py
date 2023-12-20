@@ -246,6 +246,11 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
   elif str(topics) == "BattleType.APUSH Unit 5 (Civil War & Reconstruction)":
     questions = open("battles/apush/unit5post.txt").read().strip().split("\n")
     questions = list(map(lambda x : x.split("]"), questions))
+  elif str(topics) == "BattleType.APUSH Unit 5 (All)":
+    questions = []
+    for qFileName in ["unit5pre.txt", "unit5post.txt"]:
+      questionsFile = open("battles/apush/{}".format(qFileName)).read().strip().split("\n")
+      questions += list(map(lambda x : x.split("]"), questionsFile))
   elif str(topics) == "BattleType.APUSH All Units":
     questions = []
     for qFileName in ["unit1.txt", "unit2.txt", "unit4.txt", "unit5pre.txt", "unit5post.txt"]:
