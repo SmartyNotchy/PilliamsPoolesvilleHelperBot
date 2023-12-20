@@ -57,3 +57,25 @@
 ||5.5|| Who wrote *Uncle Tom’s Cabin*?]Harriet Beecher Stowe/Harriet Stowe/Stowe
 ||5.6|| Who (person OR party) won the Election of 1852?]Franklin Pierce/Democrat
 ||5.6|| The Election of 1852 spelled the end for the:]Whigs/Whig Party
+||5.6|| This act divided the Nebraska Territory into [REDACTED] & [REDACTED], subjecting both to popular sovereignty.]Kansas-Nebraska Act
+||5.6|| Both territories in the Kansas & Nebraska Act were above the \_\_\_\_\_\_\_\_\_, angering Northern Democrats.]MO Compromise Line/Missouri Compromise Line
+||5.6|| Due to popular soverignty, fighting broke out in [REDACTED] in the 1850s; this became known as "\_\_\_\_\_\_".]Bleeding Kansas
+||5.6|| The Caning of Senator Sumner, at its root cause, was caused by issues over:]Slavery
+||5.6|| When the Whig Party broke apart, pro-slavery Ex-Whigs joined/founded this party:]Democrat
+||5.6|| When the Whig Party broke apart, anit-slavery Ex-Whigs joined/founded this party:]Republican
+||5.6|| The Republican Party was almost strictly a \_\_\_\_\_ party. (Clarifier: ||Not referring to opinion on slavery||)]Regional
+||5.6|| What was the first year in which the Republican Party ran? 18\_\_]56
+||5.6|| Who won the Election of 1856?]Buchanan/James Buchanan
+||5.6|| This was a pro-slavery Kansas Constitution supported by Buchanan.]Lecompton/Lecompton Constitution
+||5.6|| The Lecompton Constitution for Kansas was (pro/anti)-slavery.]Pro
+||5.6|| This court case established that blacks were not citizens and could not sue.]Dred Scott v. Sandford
+||5.6|| This court case established that Congress could not exclude slavery from any federal territory.]Dred Scott v. Sandford
+||5.6|| Dred Scott v. Sandford declared this law unconstitutional.]MO Compromise/Missouri Compromise/Compromise of 1820
+||5.6|| This court case declared the Missouri Compromise unconstitutional.]Dred Scott v. Sandford
+||5.6|| In the Lincoln-Douglass Debates, Douglass stated that slavery could not exist in states if laws did not maintain it. This stance was known as the:]Freeport Doctrine
+||5.7|| This rebellion is significant in that it was led by a white man to aid slaves.]John Brown's Raid/Raid on Harpers Ferry
+||5.7|| This event directly caused the secession of the Southern States.]Election of 1860/Lincoln Election
+||5.7|| This party emerged in the Election of 1860 to try to combat a Republican sweep.]Union Party/Constitutional Union Party
+||5.7|| (True/False) Most Southerners supported secession.]False
+||5.7|| After Lincoln's election, this act was a final attempt at compromise before secession.]Crittenden Compromise
+||5.7|| Lincoln was a (radical/moderate) abolitionist.]Moderate
