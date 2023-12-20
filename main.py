@@ -216,7 +216,8 @@ async def on_message(message):
 ## BATTLE SLASH COMMANDS
 ####
 
-BattleType = Enum(value="BattleType", names=["APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 4", "APUSH Unit 5", "APUSH All Units"])
+BattleType = Enum(value="BattleType", names=["APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 4", "APUSH Unit 5 (Pre-Civil War)",\
+                                             "APUSH Unit 5 (Civil War & Reconstruction)", "APUSH Unit 5 (All)", "APUSH All Units"])
 ScoreType = Enum(value="ScoreType", names=["Accuracy 50% Speed 50%", "Accuracy 75% Speed 25%", "Accuracy 90% Speed 10%"])
 
 @tree.command(
@@ -239,12 +240,15 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
   elif str(topics) == "BattleType.APUSH Unit 4":
     questions = open("battles/apush/unit4.txt").read().strip().split("\n")
     questions = list(map(lambda x : x.split("]"), questions))
-  elif str(topics) == "BattleType.APUSH Unit 5":
-    questions = open("battles/apush/unit5.txt").read().strip().split("\n")
+  elif str(topics) == "BattleType.APUSH Unit 5 (Pre-Civil War)":
+    questions = open("battles/apush/unit5pre.txt").read().strip().split("\n")
+    questions = list(map(lambda x : x.split("]"), questions))
+  elif str(topics) == "BattleType.APUSH Unit 5 (Civil War & Reconstruction)":
+    questions = open("battles/apush/unit5post.txt").read().strip().split("\n")
     questions = list(map(lambda x : x.split("]"), questions))
   elif str(topics) == "BattleType.APUSH All Units":
     questions = []
-    for qFileName in ["unit1.txt", "unit2.txt", "unit4.txt", "unit5.txt"]:
+    for qFileName in ["unit1.txt", "unit2.txt", "unit4.txt", "unit5pre.txt", "unit5post.txt"]:
       questionsFile = open("battles/apush/{}".format(qFileName)).read().strip().split("\n")
       questions += list(map(lambda x : x.split("]"), questionsFile))
   else:
