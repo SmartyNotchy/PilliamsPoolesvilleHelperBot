@@ -23,7 +23,7 @@
 ||5.3|| Which political party opposed the Mexican-American War?]Whig
 ||5.3|| The Mexican-American War resulted in a (victory/stalemate/loss) for the US.]Victory
 ||5.3|| The Treaty of Guadalupe Hidalgo ended what conflict?]Mexican-American War
-||5.3|| The Wilmot Proviso made the Mexican-American War by \_\_\_\_\_\_\_ in acquired territories.]Banning Slavery/Outlawing Slavery
+||5.3|| The Wilmot Proviso made the Mexican-American War controversial by \_\_\_\_\_\_\_ in acquired territories.]Banning Slavery/Outlawing Slavery
 ||5.3|| This proposed law banned slavery in any territories acquired from the Mexican-American War.]Wilmot Proviso
 ||5.4|| Many southerners in the mid-1800s resented this law as it banned slavery from most western territory.]MO Compromise/Missouri Compromise/Compromise of 1820
 ||5.4|| This refers to a secret agreement between the US & Spain to by Cuba, that was dropped after it was leaked to the press.]Ostend Manifesto
@@ -57,9 +57,9 @@
 ||5.5|| Who wrote *Uncle Tom's Cabin*?]Harriet Beecher Stowe/Harriet Stowe/Stowe
 ||5.6|| Who (person OR party) won the Election of 1852?]Franklin Pierce/Democrat
 ||5.6|| The Election of 1852 spelled the end for the:]Whigs/Whig Party
-||5.6|| This act divided the Nebraska Territory into [REDACTED] & [REDACTED], subjecting both to popular sovereignty.]Kansas-Nebraska Act
+||5.6|| This act divided the Nebraska Territory into ??? and ???, subjecting both to popular sovereignty.]Kansas-Nebraska Act
 ||5.6|| Both territories in the Kansas & Nebraska Act were above the \_\_\_\_\_\_\_\_\_, angering Northern Democrats.]MO Compromise Line/Missouri Compromise Line
-||5.6|| Due to popular soverignty, fighting broke out in [REDACTED] in the 1850s; this became known as "\_\_\_\_\_\_".]Bleeding Kansas
+||5.6|| Due to popular soverignty, fighting broke out in ??? in the 1850s; this became known as "\_\_\_\_\_\_".]Bleeding Kansas
 ||5.6|| The Caning of Senator Sumner, at its root cause, was caused by issues over:]Slavery
 ||5.6|| When the Whig Party broke apart, pro-slavery Ex-Whigs joined/founded this party:]Democrat
 ||5.6|| When the Whig Party broke apart, anit-slavery Ex-Whigs joined/founded this party:]Republican
