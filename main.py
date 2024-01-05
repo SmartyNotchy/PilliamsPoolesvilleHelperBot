@@ -379,7 +379,10 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
         await send_dm(player[2:-1], "{}! The correct answer(s) were \"{}\".".format(endMsg, questions[questionID][1]))
       else:
         if random.randint(0, 3) == 0:
-          scores[questionID].append([player, correctBonus + random.randint(0, 100)])
+          if "Bozo" in player:
+            pass
+          else:
+            scores[questionID].append([player, correctBonus + random.randint(0, 100)])
 
     await asyncio.sleep(3)
 
