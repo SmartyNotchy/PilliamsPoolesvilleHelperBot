@@ -216,9 +216,40 @@ async def on_message(message):
 ## BATTLE SLASH COMMANDS
 ####
 
-BattleType = Enum(value="BattleType", names=["APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 4", "APUSH Unit 5 (Pre-Civil War)",\
+BattleType = Enum(value="BattleType", names=["APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 4", "APUSH Unit 5 (Pre-War)",\
                                              "APUSH Unit 5 (Civil War & Reconstruction)", "APUSH Unit 5 (All)", "APUSH All Units"])
 ScoreType = Enum(value="ScoreType", names=["Accuracy 50% Speed 50%", "Accuracy 75% Speed 25%", "Accuracy 90% Speed 10%"])
+
+QUESTION_SETS = {
+  "BattleType.APUSH Unit 1": ["apush/unit1.txt"],
+  "BattleType.APUSH Unit 2": ["apush/unit2.txt"],
+  "BattleType.APUSH Unit 4": ["apush/unit4.txt"],
+  "BattleType.APUSH Unit 5 (Pre-War)": ["apush/unit5pre.txt"],
+  "BattleType.APUSH Unit 5 (Civil War & Reconstruction)": ["apush/unit5post.txt"],
+  "BattleType.APUSH Unit 5 (All)": ["apush/unit5pre.txt", "apush/unit5post.txt"],
+  "BattleType.APUSH All Units": ["apush/unit1.txt", "apush/unit2.txt", "apush/unit4.txt", "apush/unit5pre.txt", "apush/unit5post.txt"]
+}
+
+@tree.command(
+    guild=discord.Object(id=GUILD_ID),
+    name="questionsets",
+    description="Lists available question sets for use in battles."
+)
+
+async def questionsets(interaction: discord.Interaction):
+  embed = discord.Embed(title="Trivia Question Sets", description="List of question sets for use in trivia battles.", color=0x3366ff)
+  
+  for (key, value) in QUESTION_SETS.items():
+    questions = []
+    for setFile in value:
+      #print(setFile)
+      questionsFile = open("battles/{}".format(setFile)).read().strip().split("\n")
+      questions += list(map(lambda x : x.split("]"), questionsFile))
+    embed.add_field(name=(key[11:]), value="{} Questions".format(len(questions)))
+  
+  await interaction.response.send_message(embed=embed)
+
+
 
 @tree.command(
   guild=discord.Object(id=GUILD_ID),
@@ -229,35 +260,12 @@ ScoreType = Enum(value="ScoreType", names=["Accuracy 50% Speed 50%", "Accuracy 7
 async def runbattle(interaction: discord.Interaction, topics: BattleType, scoring: ScoreType, numquestions: int):
   global waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questions, timeLeft, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered, numPlayersNotBots
 
-  questions = None
+  questions = []
   
-  if str(topics) == "BattleType.APUSH Unit 1":
-    questions = open("battles/apush/unit1.txt").read().strip().split("\n")
-    questions = list(map(lambda x : x.split("]"), questions))
-  elif str(topics) == "BattleType.APUSH Unit 2":
-    questions = open("battles/apush/unit2.txt").read().strip().split("\n")
-    questions = list(map(lambda x : x.split("]"), questions))
-  elif str(topics) == "BattleType.APUSH Unit 4":
-    questions = open("battles/apush/unit4.txt").read().strip().split("\n")
-    questions = list(map(lambda x : x.split("]"), questions))
-  elif str(topics) == "BattleType.APUSH Unit 5 (Pre-Civil War)":
-    questions = open("battles/apush/unit5pre.txt").read().strip().split("\n")
-    questions = list(map(lambda x : x.split("]"), questions))
-  elif str(topics) == "BattleType.APUSH Unit 5 (Civil War & Reconstruction)":
-    questions = open("battles/apush/unit5post.txt").read().strip().split("\n")
-    questions = list(map(lambda x : x.split("]"), questions))
-  elif str(topics) == "BattleType.APUSH Unit 5 (All)":
-    questions = []
-    for qFileName in ["unit5pre.txt", "unit5post.txt"]:
-      questionsFile = open("battles/apush/{}".format(qFileName)).read().strip().split("\n")
-      questions += list(map(lambda x : x.split("]"), questionsFile))
-  elif str(topics) == "BattleType.APUSH All Units":
-    questions = []
-    for qFileName in ["unit1.txt", "unit2.txt", "unit4.txt", "unit5pre.txt", "unit5post.txt"]:
-      questionsFile = open("battles/apush/{}".format(qFileName)).read().strip().split("\n")
-      questions += list(map(lambda x : x.split("]"), questionsFile))
-  else:
-    print(str(topics))
+  topicQuestionSet = QUESTION_SETS[str(topics)]
+  for setFile in topicQuestionSet:
+    questionsFile = open("battles/{}".format(setFile)).read().strip().split("\n")
+    questions += list(map(lambda x : x.split("]"), questionsFile))
 
   random.shuffle(questions)
 
@@ -324,7 +332,7 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
   await interaction.channel.send(msg)
   await interaction.channel.send("**" + str(len(players)) + " players remain.**")
   await asyncio.sleep(1)
-  await interaction.channel.send("Questions will start in about 30 seconds. Please check your DMs.")
+  await interaction.channel.send("Questions will start in about 10 seconds. Please check your DMs.")
   for player in players:
     if player[0] == "<":
       await send_dm(player[2:-1], "**----- Scoring -----**\nYou will have 15 seconds each to answer {} questions.\nScoring for each question goes as follows:\n> `{}` Points for a Correct Answer\n> Up to `{}` additional points for faster answers\n> `0` Points for wrong answers/Not Finishing\nWrong answers will not penalize you if you get the correct answer later.\nThe player with the most points at the end will be the winner of the battle.\n\nHang tight for the battle to start!".format(numquestions,correctBonus,1000-correctBonus))
@@ -336,7 +344,7 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
   battleRunning = True
   
   questions = questions[:numquestions]
-  await asyncio.sleep(30)
+  await asyncio.sleep(10)
 
 
   # Ask Trivia Questions
