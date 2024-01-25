@@ -343,7 +343,7 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
   await interaction.channel.send("Questions will start in about 10 seconds. Please check your DMs.")
   for player in players:
     if player[0] == "<":
-      await send_dm(player[2:-1], "**----- Scoring -----**\nYou will have 15 seconds each to answer {} questions.\nScoring for each question goes as follows:\n> `{}` Points for a Correct Answer\n> Up to `{}` additional points for faster answers\n> `0` Points for wrong answers/Not Finishing\nWrong answers will not penalize you if you get the correct answer later.\nThe player with the most points at the end will be the winner of the battle.\n\nHang tight for the battle to start!".format(numquestions,correctBonus,1000-correctBonus))
+      await send_dm(player[2:-1], "**----- Scoring -----**\nYou will have 15 seconds each to answer {} questions.\nScoring for each question goes as follows:\n> `{}` Points for a Correct Answer\n> Up to `{}` additional points for faster answers\n> `0` Points for wrong answers/Not Finishing\nWrong answers will not penalize you if you get the correct answer later.\nThe player with the most points at the end will be the winner of the battle.\nIf I messed up on a question, type !bad to report the most recently answered question.\n\nHang tight for the battle to start!".format(numquestions,correctBonus,1000-correctBonus))
 
 
 
