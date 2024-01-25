@@ -217,7 +217,7 @@ async def on_message(message):
 ####
 
 BattleType = Enum(value="BattleType", names=["APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 4", "APUSH Unit 5 (Pre-War)",\
-                                             "APUSH Unit 5 (Civil War & Reconstruction)", "APUSH Unit 5 (All)", "APUSH All Units"])
+                                             "APUSH Unit 5 (Civil War & Reconstruction)", "APUSH Unit 5 (All)", "APUSH Unit 6", "APUSH All Units"])
 ScoreType = Enum(value="ScoreType", names=["Accuracy 50% Speed 50%", "Accuracy 75% Speed 25%", "Accuracy 90% Speed 10%"])
 
 QUESTION_SETS = {
@@ -227,7 +227,8 @@ QUESTION_SETS = {
   "BattleType.APUSH Unit 5 (Pre-War)": ["apush/unit5pre.txt"],
   "BattleType.APUSH Unit 5 (Civil War & Reconstruction)": ["apush/unit5post.txt"],
   "BattleType.APUSH Unit 5 (All)": ["apush/unit5pre.txt", "apush/unit5post.txt"],
-  "BattleType.APUSH All Units": ["apush/unit1.txt", "apush/unit2.txt", "apush/unit4.txt", "apush/unit5pre.txt", "apush/unit5post.txt"]
+  "BattleType.APUSH Unit 6": ["apush/unit6.txt"],
+  "BattleType.APUSH All Units": ["apush/unit1.txt", "apush/unit2.txt", "apush/unit4.txt", "apush/unit5pre.txt", "apush/unit5post.txt", "apush/unit6.txt"]
 }
 
 @tree.command(
