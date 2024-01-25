@@ -199,8 +199,15 @@ async def on_message(message):
       scores[questionID].append(["<@" + str(message.author.id) + ">", correctBonus + int(questionTime*((1000 - correctBonus)/500))])
       await message.channel.send("Answered correctly in " + str(round((500 - questionTime)*0.03, 2)) + " seconds for " + str(correctBonus + int(questionTime*((1000 - correctBonus)/500))) + " points!")
       #print("<@" + str(message.author.id) + "> answered Q{0} in {1} seconds for {2} points.".format(questionID, round((500 - questionTime)*0.03, 2), 500 + questionTime))
+    elif "!bad" in message.content.lower():
+      await message.add_reaction("🔎")
+      await battleChannel.send("🔎 <@" + str(message.author.id) + "> requested a manual reviewal of Q{0}!".format(questionID-1))
     else:
       await message.add_reaction("❌")
+  elif message.guild is None and ("<@" + str(message.author.id) + ">") in registeredPlayers and askingTrivia:
+    if "!bad" in message.content.lower():
+      await message.add_reaction("🔎")
+      await battleChannel.send("🔎 <@" + str(message.author.id) + "> requested a manual reviewal of Q{0}!".format(questionID))
 
   # Battle Registration
   if not waitingForPlayers or message.channel != battleChannel:
