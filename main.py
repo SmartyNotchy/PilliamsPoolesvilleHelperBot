@@ -1,6 +1,8 @@
 # This code is based on the following example:
 # https://discordpy.readthedocs.io/en/stable/quickstart.html#a-minimal-bot
 
+print("Hello World!")
+
 import discord
 from discord import app_commands
 from discord.ext import tasks, commands
@@ -14,6 +16,8 @@ import os
 import random
 
 from difflib import SequenceMatcher
+
+print("Modules Loaded")
 
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
@@ -210,14 +214,14 @@ async def on_message(message):
       await battleChannel.send("🔎 <@" + str(message.author.id) + "> requested a manual reviewal of Q{0}!".format(questionID+1))
 
   # Battle Registration
-  if not waitingForPlayers or message.channel != battleChannel:
-    return
+  #if not waitingForPlayers or message.channel != battleChannel:
+  #  return
 
-  if message.author == bot.user or ("<@" + str(message.author.id) + ">") in registeredPlayers:
-    return
+  #if message.author == bot.user or ("<@" + str(message.author.id) + ">") in registeredPlayers:
+  #  return
 
-  registeredPlayers.append("<@" + str(message.author.id) + ">")
-  await message.add_reaction("⚔️")
+  #registeredPlayers.append("<@" + str(message.author.id) + ">")
+  #await message.add_reaction("⚔️")
 
 ####
 ## BATTLE SLASH COMMANDS
@@ -296,7 +300,7 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
   battleRunning = False
   battleChannel = interaction.channel
   await interaction.response.send_message(registeredPlayers[0] + " is starting a battle!")
-  await interaction.channel.send("Topic: `" + str(topics)[11:] + "`\nQuestions: `" + str(numquestions) + "`\nScoring: `" + str(scoring)[10:] + "`\nSend a message in this channel or use /battleregister to register for the battle.\nRegistration is open for 5 minutes.")
+  await interaction.channel.send("Topic: `" + str(topics)[11:] + "`\nQuestions: `" + str(numquestions) + "`\nScoring: `" + str(scoring)[10:] + "`\nUse /battleregister to register for the battle.\nRegistration is open for 5 minutes.")
   await interaction.channel.send(registeredPlayers[0] + ", you can skip the countdown by using /battleskip.")
 
   timeLeft = 300
@@ -381,7 +385,7 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
     inQuestion = False
     for player in players:
       if player[0] == "<":
-        endMsg = "Time's up!"
+        endMsg = "Time's up"
         if nextQEarly:
           endMsg = "All non-bot players have answered"
           await asyncio.sleep(1)
@@ -714,9 +718,11 @@ async def on_ready():
 
 from webserver import keep_alive
 
+print("Attempting Logon")
+
 try:
   pass
-  keep_alive()
+  #keep_alive()
   bot.run(open("C:/Users/smart/Desktop/Python/bot.txt", "r").readline())
 except discord.HTTPException as e:
   if e.status == 429:
