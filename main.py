@@ -169,6 +169,7 @@ battleRunning = False
 battleChannel = None
 registeredPlayers = []
 scores = [[], [], [], [], [], [], [], [], [], [], []]
+accuracy = {}
 
 questions = []
 questionID = 0
@@ -182,7 +183,7 @@ numPlayersAnswered = 0
 
 @bot.event
 async def on_message(message):
-  global waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered
+  global waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered, accuracy
 
   if message.author == bot.user:
     return
@@ -201,6 +202,7 @@ async def on_message(message):
       numPlayersAnswered += 1
       await message.add_reaction("✅")
       scores[questionID].append(["<@" + str(message.author.id) + ">", correctBonus + int(questionTime*((1000 - correctBonus)/500))])
+      accuracy["<@" + str(message.author.id) + ">"] += 1
       await message.channel.send("Answered correctly in " + str(round((500 - questionTime)*0.03, 2)) + " seconds for " + str(correctBonus + int(questionTime*((1000 - correctBonus)/500))) + " points!")
       #print("<@" + str(message.author.id) + "> answered Q{0} in {1} seconds for {2} points.".format(questionID, round((500 - questionTime)*0.03, 2), 500 + questionTime))
     elif "!bad" in message.content.lower():
@@ -227,19 +229,20 @@ async def on_message(message):
 ## BATTLE SLASH COMMANDS
 ####
 
-BattleType = Enum(value="BattleType", names=["APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 4", "APUSH Unit 5 (Pre-War)",\
+BattleType = Enum(value="BattleType", names=["APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 3", "APUSH Unit 4", "APUSH Unit 5 (Pre-War)",\
                                              "APUSH Unit 5 (Civil War & Reconstruction)", "APUSH Unit 5 (All)", "APUSH Unit 6", "APUSH All Units"])
 ScoreType = Enum(value="ScoreType", names=["Accuracy 50% Speed 50%", "Accuracy 75% Speed 25%", "Accuracy 90% Speed 10%"])
 
 QUESTION_SETS = {
   "BattleType.APUSH Unit 1": ["apush/unit1.txt"],
   "BattleType.APUSH Unit 2": ["apush/unit2.txt"],
+  "BattleType.APUSH Unit 3": ["apush/unit3.txt"],
   "BattleType.APUSH Unit 4": ["apush/unit4.txt"],
   "BattleType.APUSH Unit 5 (Pre-War)": ["apush/unit5pre.txt"],
   "BattleType.APUSH Unit 5 (Civil War & Reconstruction)": ["apush/unit5post.txt"],
   "BattleType.APUSH Unit 5 (All)": ["apush/unit5pre.txt", "apush/unit5post.txt"],
   "BattleType.APUSH Unit 6": ["apush/unit6.txt"],
-  "BattleType.APUSH All Units": ["apush/unit1.txt", "apush/unit2.txt", "apush/unit4.txt", "apush/unit5pre.txt", "apush/unit5post.txt", "apush/unit6.txt"]
+  "BattleType.APUSH All Units": ["apush/unit1.txt", "apush/unit2.txt", "apush/unit3.txt", "apush/unit4.txt", "apush/unit5pre.txt", "apush/unit5post.txt", "apush/unit6.txt"]
 }
 
 @tree.command(
@@ -270,7 +273,7 @@ async def questionsets(interaction: discord.Interaction):
 )
 
 async def runbattle(interaction: discord.Interaction, topics: BattleType, scoring: ScoreType, numquestions: int):
-  global waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questions, timeLeft, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered, numPlayersNotBots
+  global waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questions, timeLeft, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered, numPlayersNotBots, accuracy
 
   questions = []
   
@@ -316,6 +319,10 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
       await interaction.channel.send("Registration will close in " + str(timeLeft//60) + " minute(s).")
   battleRunning = True
   waitingForPlayers = False
+
+  accuracy = {}
+  for p in registeredPlayers:
+    accuracy[p] = 0
 
   numPlayersNotBots = len(registeredPlayers)
 
@@ -426,8 +433,8 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
 
   # Run Battle
   usedEvents = []
-  dEventStartChance = 75
-  dEventEndChance = 50
+  dEventStartChance = 95
+  dEventEndChance = 60
   totalPlayers = len(players)
   remainingPlayers = len(players)
   toKillPos = 0
@@ -474,7 +481,10 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
   leaderboard.reverse()
   scores.reverse()
   for i in range(5):
-    await interaction.channel.send("> {0}. {1} ({2} points)".format(str(i+1) + getSuffix(i+1), leaderboard[i], scores[i][1]))
+    if leaderboard[i][0] == "<":
+      await interaction.channel.send("> {0}. {1} ({2} points, {3}/{4} correct)".format(str(i+1) + getSuffix(i+1), leaderboard[i], scores[i][1], accuracy[leaderboard[i]], len(questions)))
+    else:
+      await interaction.channel.send("> {0}. {1} ({2} points)".format(str(i+1) + getSuffix(i+1), leaderboard[i], scores[i][1]))
     await asyncio.sleep(0.5)
 
   await asyncio.sleep(3)
