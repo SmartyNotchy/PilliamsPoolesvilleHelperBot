@@ -474,13 +474,13 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
     await asyncio.sleep(3)
 
   # Print Leaderboard
-  await interaction.channel.send("The battle is over!")
+  await interaction.channel.send("**---------- Battle Over! ----------**")
   await asyncio.sleep(2)
-  await interaction.channel.send("Leaderboard (Top 5):")
+  await interaction.channel.send("Leaderboard:")
   await asyncio.sleep(0.5)
   leaderboard.reverse()
   scores.reverse()
-  for i in range(5):
+  for i in range(len(leaderboard)):
     if leaderboard[i][0] == "<":
       await interaction.channel.send("> {0}. {1} ({2} points, {3}/{4} correct)".format(str(i+1) + getSuffix(i+1), leaderboard[i], scores[i][1], accuracy[leaderboard[i]], len(questions)))
     else:
