@@ -215,6 +215,13 @@ async def on_message(message):
       await message.add_reaction("🔎")
       await battleChannel.send("🔎 <@" + str(message.author.id) + "> requested a manual reviewal of Q{0}!".format(questionID+1))
 
+  # RNG yay
+  if random.randint(0, 1000) == 420:
+    await message.add_reaction("<:StrawberryJam:1107856772615655504>")
+  
+  if ("vashi" in message.content.lower() or "vasis" in message.content.lower()) and random.randint(0, 3) == 1:
+    await message.add_reaction("<:Vasisht:1196660405225926666>")
+
   # Battle Registration
   #if not waitingForPlayers or message.channel != battleChannel:
   #  return
