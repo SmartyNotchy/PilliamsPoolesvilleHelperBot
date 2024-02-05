@@ -1,11 +1,81 @@
-||3.2|| The French & Indian War was part of this larger conflict between Britain & France.]The Seven Years' War
-||3.2|| This war was caused by territorial disputes in the Ohio River Valley.]French & Indian War
-||3.2|| During the French & Indian War, colonists met in this event to discuss a unified colonial response.]Albany Convention
-||3.2|| Benjamin Franklin proposed the \_\_\_\_\_\_ during the Albany Convention, setting a foundation for the future Revolutionary Congress.]Albany Plan of Union
-||3.2|| During the French & Indian War, Britain mainly did two controversial things to the colonists. Name one of them.]Impressment/Increasing impressment/Quartering
-||3.2|| In the Treaty of Paris ending the French & Indian War, Britain gained all land in the \_\_\_\_\_.]Ohio River Valley/East of the Mississippi
-||3.2|| To prevent further conflicts with native after the French & Indian War, Britain passed:]Proclamation Line/Proclamation Line of 1763
-||3.2|| One economic consequence of the French & Indian War was:]Increasing debt/Increasing British Debt/British Debt/Debt
-||3.3|| Parliament left many political day-to-day decisions to the colonies, a policy called:]Salutary Neglect
-||3.3|| Salutary neglect continued for a long time up until the end of:]The French & Indian War/The Seven Years' War
-||3.3|| George Grenville suggested a three-point plan to regain control of the colonies. The main law passed in it was the:]Quartering Act/Quartering Act of 1765
+||3.2|| The French & Indian War was between the French & the \_\_\_\_\_\_.]British/English/Britain/England
+||3.2|| The French & Indian War was a small part of this larger war.]Seven Year's War
+||3.2|| The French & Indian War was caused by territorial disputes in this location.]Ohio/Ohio River/Ohio River Valley
+||3.2|| This convention of colonists during the French & Indian War was a precursor to the Revolutionary Congress.]Albany Congress/Albany Convention/Albany
+||3.2|| This treaty ended the French & Indian War.]Peace of Paris/Treaty of Paris/Treaty of 1763
+||3.2|| Which side benefited the most from the French & Indian War?]England/Britain/Great Britain
+||3.2|| As a result of the French & Indian War, this area was opened up to the colonists.]Ohio/Ohio River/Ohio River Valley
+||3.2|| To protect colonists from native violence in the mid-1700s, Parliament passed the:]Proclamation of 1763
+||3.2|| This law outraged colonists because they felt they had a right to explore the land they'd won.]Proclamation of 1763
+||3.2|| How did the colonists react to the Proclamation of 1763? (Supportive/indifferent/conflicted/outraged)]Outraged
+||3.2|| This event directly led to Parliament passing the first of various tax acts.]French & Indian War/Seven Years' War
+||3.3|| This refers to Parliament's indifferent behavior to the colonies prior to the French & Indian War.]Salutary Neglect
+||3.3|| What event directly led to the end of salutary neglect?]French & Indian War/Seven Years' War
+||3.3|| This act kept British soldiers stationed in the colonies, and made the colonists feed & house them.]Quartering Act
+||3.3|| To regain control of the colonies, the British prime minster suggested a three-part plan; who was he?]George Grenville/Grenville
+||3.3|| Which tax act came significantly after the others? (Sugar Act/Tea Act/Stamp Act)]Tea Act
+||3.3|| This act prevented colonists from making the money to pay the various tax acts.]Currency Act
+||3.3|| The argument of no "\_\_\_\_\_\_ \_\_\_\_\_\_ \_\_\_\_\_\_" was based on the lack of colonists in Parliament.]Taxation Without Representation
+||3.3|| Britain responded to "no taxation without representation" by saying the colonists were \_\_\_\_ \_\_\_\_\_\_\_.]Virtually Represented
+||3.3|| Colonial groups were organized to protest the various tax acts (mainly Stamp Act); name one.]Sons of Liberty/Daughters of Liberty/Stamp Act Congress
+||3.3|| During the Stamp Act Congress, colonists wanted (revolution/repeal of Stamp Act/nullification of Stamp Act).]Repeal of Stamp Act
+||3.3|| When Parliament repealed the Stamp Act & Sugar Act in 1766, they also passed this act to assert dominance.]Declaratory Act
+||3.3|| The Boston Tea Party led to the passage of these acts:]Coercive Acts/Intolerable Acts
+||3.4|| During the Continental Congress of 1774, colonists (supported/were conflicted on/opposed) revolution.]Opposed
+||3.4|| Ideals from this movement had a large influence on the Continental Congress of 1774.]Enlightenment
+||3.4|| This pamphlet used everyday language to swing public opinion to support revolution.]Common Sense
+||3.4|| Who wrote Common Sense?]Thomas Paine
+||3.4|| Which of these people would have opposed colonial revolution? (Thomas Paine/John Locke/Charles Townshend/Kirabo Payne)]Charles Townshend
+||3.4|| The Second Continental Congress resulted in this document.]Declaration of Independence
+||3.5|| Which % is closest to the amount of Patriots at the start of the Revolution? (25/50/75/99)]50
+||3.5|| The Continental Congress appointed this person as commander in chief.]George Washington/Washington
+||3.5|| Washington waged a war of \_\_\_\_\_\_, attempting to hold out long enough to tire the British.]Attrition
+||3.5|| This battle in the Revolution convinced France to join the colonists' side.]Saratoga/Battle of Saratoga
+||3.5|| Which **best** describes why the Battle of Saratoga was important? (Final Victory/Convinced French/Lowered British Morale/Increased Colonial Morale)]Convinced French
+||3.5|| Which **best** describes why the Battle of Yorktown was important? (Final Victory/Convinced French/Lowered British Morale/Increased Colonial Morale)]Final Victory
+||3.5|| This treaty established America as an independent country.]Treaty of Paris
+||3.6|| This concept refers to the belief that women needed to be well-educated to raise sons with republican ideals.]Republican Motherhood
+||3.6|| The American Revolution kickstarted many other revolutions in the world; name the one that immediately followed in 1789.]France/French/French Revolution
+||3.7|| The first "Constitution" of the US were the:]Articles of Confederation
+||3.7|| The Articles of Confederation invested most power in this branch.]Legislative
+||3.7|| True/False; the Articles of Confederation appointed a Supreme Court.]False
+||3.7|| To change the Articles of Confederation, \_/13 states needed to approve.]9
+||3.7|| How many votes did each state get under the Articles of Confederation? (0/1/Based on Population/Based on Size)]1
+||3.7|| This was the most important (perhaps only) accomplishment under the Articles of Confederation.]Northwest Ordinance/Northwest Ordinance of 1787
+||3.7|| This law passed under the Articles of Confederation provided a statehood process for the Northwest states.]Northwest Ordinance/Northwest Ordinance of 1787
+||3.7|| This event exposed the weaknesses of the Articles of Confederation.]Shay's Rebellion
+||3.7|| Shay's Rebellion exposed the weaknesses in the:]Articles/Articles of Confederation
+||3.8|| The Virginia & New Jersey Plans referred to the debate on (representation/slavery/federal power).]Representation
+||3.8|| Under the (Virginia/New Jersey) Plan, each state got a single vote.]New Jersey
+||3.8|| Under the (Virginia/New Jersey) Plan, states got votes based on population.]Virginia
+||3.8|| The Three-Fifths Compromise referred to the debate on (representation/slavery/federal power).]Slavery
+||3.8|| The Constitution (advocated for/didn't mention/delayed/opposed) the status of slavery.]Delayed
+||3.8|| The Bill of Rights appeased the (Federalists/Anti-Feds).]Federalists
+||3.8|| Anti-Federalists claimed the Constitution gave the fed. gov. (too much/too little) power.]Too Much
+||3.8|| Which of the following people would NOT support the Constitution? (Alexander Hamilton/James Madison/John Jay/Patrick Henry)]Patrick Henry
+||3.9|| Article VI of the Constitution, known as the \_\_\_\_\_ \_\_\_\_\_, stated that national laws trumped state laws in event of a contradiction.]Supremacy Clause
+||3.9|| The Supremacy Clause only applied to certain national laws, known as \_\_\_\_\_\_\_ \_\_\_\_\_ (Article I Section 8).]Enumerated Powers
+||3.9|| This amendment reserved non-enumerated powers to state governments.]10/Tenth
+||3.9|| This concept refers to the sharing of power between national & state governments.]Federalism
+||3.9|| The system of \_\_\_\_\_\_\_ \_\_ \_\_\_\_\_\_ ensured no one branch of government had too much power. (i.e. overriding vetoes)]Checks & Balances
+||3.10|| Under George Washington, the precedent of a \_\_\_\_\_ of secretaries of departments was established.]Cabinet
+||3.10|| \_\_\_\_\_\_\_ \_\_\_\_\_\_, Washington's Secretary of Treasury, established the first National Bank.]Alexander Hamilton
+||3.10|| The National Bank was contested by (large/small/high debt/little debt) states.]Little Debt
+||3.10|| Hamilton justified the creation of the Bank by the \_\_\_\_\_\_ clause.]Elastic/Necessary & Proper
+||3.10|| Washington decided to (support/stay neutral/oppose) the French Revolution.]Stay Neutral
+||3.10|| Due to British impressment of sailors, Washington sent his chief justice to Britain, negotiating this treaty.]Jay's Treaty/Jay
+||3.10|| Under Washington, this treaty allowed the US to use the port of New Orleans.]Pinckney/Pinckney Treaty
+||3.10|| In the aftermath of this battle, Indians surrended all land in the Ohio River Valley to the US.]Fallen Timbers/Battle of Fallen Timbers
+||3.10|| The success in dealing with this incident proved the effectiveness of the Constitution.]Whiskey Rebellion
+||3.10|| In the first two-party system in the US, the two parties were the \_\_\_\_\_\_ and the \_\_\_ - \_\_\_\_\_.]Federalists, Demo-Reps/Federalists, Democratic Republicans
+||3.10|| Who led the earliest Federalist party?]Hamilton/Alexander Hamilton
+||3.10|| Who led the earliest Demo-Rep party?]Jefferson/Thomas Jefferson/Madison/James Madison
+||3.10|| The (Feds/Demo-Reps) supported a strong central government.]Feds
+||3.10|| The (Feds/Demo-Reps) favored the interests of the rich.]Feds
+||3.10|| The (Feds/Demo-Reps) supported strate government rights.]Demo-Reps
+||3.10|| The (Feds/Demo-Reps) favored the interests of yeomen farmers.]Demo-Reps
+||3.10|| Washington's Farewell Address covered all of the following topics EXCEPT (sectionalism/expansion/foreign policy/political parties).]Expansion
+||3.10|| When John Adams sent diplomats to France to stop the seizings of ships, French diplomats demanded a bribe, leading to this incident.]XYZ Affair
+||3.10|| Adams pushed for this piece of legislation, which made it illegal to criticize the government and allowed deportation of immigrants.]Alien & Sedition Acts
+||3.10|| As a result of the Alien & Sedition Acts, these "resolutions" were issued.]Virginia & Kentucky/Virginia & Kentucky Resolutions
+||3.10|| The Virginia & Kentucky Resolutions foreshadowed this crisis that would occur later on.]Nullification/Nullification Crisis
