@@ -132,20 +132,6 @@ async def send_dm(id, msg):
   except:
     pass
 
-
-def calcPoints(placement):
-  if placement == 0:
-    return 10
-  if placement == 1:
-    return 9
-  if placement == 2:
-    return 8
-  if placement == 3:
-    return 7
-  if placement == 4:
-    return 6
-  return 5
-
 def getSuffix(i):
   if i % 100 >= 10 and i % 100 <= 19:
     return "th"
@@ -237,7 +223,7 @@ async def on_message(message):
 ####
 
 BattleType = Enum(value="BattleType", names=["APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 3", "APUSH Unit 4", "APUSH Unit 5 (Pre-War)",\
-                                             "APUSH Unit 5 (Civil War & Reconstruction)", "APUSH Unit 5 (All)", "APUSH Unit 6", "APUSH All Units"])
+                                             "APUSH Unit 5 (Civil War & Reconstruction)", "APUSH Unit 5 (All)", "APUSH Unit 6", "APUSH Unit 7", "APUSH All Units"])
 ScoreType = Enum(value="ScoreType", names=["Accuracy 50% Speed 50%", "Accuracy 75% Speed 25%", "Accuracy 90% Speed 10%"])
 
 QUESTION_SETS = {
@@ -249,6 +235,7 @@ QUESTION_SETS = {
   "BattleType.APUSH Unit 5 (Civil War & Reconstruction)": ["apush/unit5post.txt"],
   "BattleType.APUSH Unit 5 (All)": ["apush/unit5pre.txt", "apush/unit5post.txt"],
   "BattleType.APUSH Unit 6": ["apush/unit6.txt"],
+  "BattleType.APUSH Unit 7": ["apush/unit7.txt"],
   "BattleType.APUSH All Units": ["apush/unit1.txt", "apush/unit2.txt", "apush/unit3.txt", "apush/unit4.txt", "apush/unit5pre.txt", "apush/unit5post.txt", "apush/unit6.txt"]
 }
 
