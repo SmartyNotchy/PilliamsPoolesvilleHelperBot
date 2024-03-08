@@ -234,7 +234,8 @@ QUESTION_SETS = {
   "BattleType.APUSH Unit 5": ["apush/unit5.txt"],
   "BattleType.APUSH Unit 6": ["apush/unit6.txt"],
   "BattleType.APUSH Unit 7": ["apush/unit7.txt"],
-  "BattleType.APUSH All Units": ["apush/unit1.txt", "apush/unit2.txt", "apush/unit3.txt", "apush/unit4.txt", "apush/unit5.txt", "apush/unit6.txt", "apush/unit7.txt"]
+  "BattleType.APUSH Unit 8": ["apush/unit8.txt"],
+  "BattleType.APUSH All Units": ["apush/unit1.txt", "apush/unit2.txt", "apush/unit3.txt", "apush/unit4.txt", "apush/unit5.txt", "apush/unit6.txt", "apush/unit7.txt", "apush/unit8.txt"]
 }
 
 @tree.command(
@@ -686,21 +687,6 @@ async def change_status():
   random_activity = random.choice(PRESENCE_ACTIVITIES)
   await bot.change_presence(activity = discord.Activity(type = ACTIVITY_TYPES[random_activity[0]],
                                                        name = random_activity[1]))
-
-QUOTES = [
-  "Stop burning daylight and flush that middle schooler down the drain!",
-  "Just answer the question to the best of your ability.",
-  "Measure twice cut once!",
-  "As Grandma Kingman always used to say, haste makes waste!",
-  "Always think three cuts ahead!",
-  "Come on guys, get ready to work by the bell!"
-]
-
-@tasks.loop(hours=24.0)
-async def kingman_qotd():
-  embed = discord.Embed(title="Kingman QOTD", color=0xFF0000)
-  embed.add_field(value=random.choice(QUOTES), inline=False)
-  await ctx.send(embed=embed)
 
 #########################
 ## DISCORD BOT STARTUP ##
