@@ -223,7 +223,7 @@ async def on_message(message):
 ####
 
 BattleType = Enum(value="BattleType", names=["APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 3", "APUSH Unit 4",\
-                                             "APUSH Unit 5", "APUSH Unit 6", "APUSH Unit 7", "APUSH All Units"])
+                                             "APUSH Unit 5", "APUSH Unit 6", "APUSH Unit 7", "APUSH Unit 8", "APUSH All Units"])
 ScoreType = Enum(value="ScoreType", names=["Accuracy 50% Speed 50%", "Accuracy 75% Speed 25%", "Accuracy 90% Speed 10%"])
 
 QUESTION_SETS = {
