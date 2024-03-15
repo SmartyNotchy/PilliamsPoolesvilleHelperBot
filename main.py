@@ -169,7 +169,7 @@ numPlayersAnswered = 0
 
 @bot.event
 async def on_message(message):
-  global waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered, accuracy
+  global quickplay_sessions, waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered, accuracy
 
   if message.author == bot.user:
     return
@@ -205,6 +205,11 @@ async def on_message(message):
   if random.randint(0, 1000) == 420:
     await message.add_reaction("<:StrawberryJam:1107856772615655504>")
   
+  if message.guild is None:
+    for qps in quickplay_sessions:
+      if qps.active and qps.matchesPlayer(message.author.id):
+        await qps.parse_msg(message)
+
   if ("vashi" in message.content.lower() or "vasis" in message.content.lower()) and random.randint(0, 3) == 1:
     await message.add_reaction("<:Vasisht:1196660405225926666>")
 
@@ -277,6 +282,12 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
   if numquestions <= 0:
     await interaction.response.send_message("*Error! The battle must ask at least 1 question!*")
     return
+  
+  playerID = interaction.user.id
+  for qps in quickplay_sessions:
+    if qps.matchesPlayer(playerID) and qps.active:
+      await interaction.response.send_message("*Error! You cannot start a battle while in a quickplay session! DM the bot `!end` to leave.*") 
+      return
 
   questions = []
   
@@ -570,9 +581,15 @@ async def register(interaction: discord.Interaction):
   elif "<@" + str(interaction.user.id) + ">" in registeredPlayers:
     await interaction.response.send_message("*Error! You are already registered for this battle!*")
     return
-  else:
-    registeredPlayers.append("<@" + str(interaction.user.id) + ">")
-    await interaction.response.send_message("⚔️ You have registered for the upcoming battle!")
+  
+  playerID = interaction.user.id
+  for qps in quickplay_sessions:
+    if qps.matchesPlayer(playerID) and qps.active:
+      await interaction.response.send_message("*Error! You cannot join a battle while in a quickplay session! DM the bot `!end` to leave.*") 
+      return
+  
+  registeredPlayers.append("<@" + str(interaction.user.id) + ">")
+  await interaction.response.send_message("⚔️ You have registered for the upcoming battle!")
 
 
 
@@ -620,10 +637,113 @@ async def forceregister(interaction: discord.Interaction, player: str):
   elif player in registeredPlayers:
     await interaction.response.send_message("*Error! This player is already registered for this battle!*")
     return
-  else:
-    registeredPlayers.append(player)
-    await interaction.response.send_message("⚔️ " + str(player) + " has been registered for the upcoming battle!")
 
+  playerID = interaction.user.id
+  for qps in quickplay_sessions:
+    if qps.matchesPlayer(playerID) and qps.active:
+      await interaction.response.send_message("*Error! This player is in a quickplay session!*") 
+      return
+    
+  registeredPlayers.append(player)
+  await interaction.response.send_message("⚔️ " + str(player) + " has been registered for the upcoming battle!")
+
+
+
+
+quickplay_sessions = []
+
+class QuickplaySession:
+  async def setup(self, player, topic):
+    self.player = player
+    self.topic = topic
+    self.active = True
+
+    self.questions = []
+    self.questionNum = -1
+    
+    topicQuestionSet = QUESTION_SETS[str(topic)]
+    for setFile in topicQuestionSet:
+      questionsFile = open("battles/{}".format(setFile)).read().strip().split("\n")
+      self.questions += list(map(lambda x : x.split("]"), questionsFile))
+
+    random.shuffle(self.questions)
+
+    await send_dm(self.player, "**--- Quickplay Session ---**")
+    await send_dm(self.player, "Topic: `" + str(topic)[11:] + "`")
+    await send_dm(self.player, "Use `!skip` to skip a question.")
+    await send_dm(self.player, "Use `!end` to end this quickplay session.")
+    await self.nextQuestion()
+
+  async def nextQuestion(self):
+    self.questionNum += 1
+    if self.questionNum >= len(self.questions):
+      await send_dm(self.player, "Congrats, you've completed the question set! This quickplay session has been ended.")
+      self.active = False
+      return
+    
+    
+    question = self.questions[self.questionNum]
+    await send_dm(self.player, "--------------------\n" + question[0])
+
+  def matchesPlayer(self, other):
+    return self.player == other
+
+  async def parse_msg(self, message):
+    content = message.content.lower()
+    if content == "!skip":
+      await message.add_reaction("⏭️")
+      await send_dm(self.player, "Skipped! Answers: " + self.questions[self.questionNum][1].lower())
+      await self.nextQuestion()
+    elif content == "!end":
+      self.active = False
+      await send_dm(self.player, "Quickplay Session Ended!")
+    else:
+      correctAns = self.questions[self.questionNum][1].lower().split("/")
+      isCorrect = False
+      for ca in correctAns:
+        if similar(ca, content) > 0.777:
+          isCorrect = True
+          break
+      if isCorrect:
+        await message.add_reaction("✅")
+        await send_dm(self.player, "Correct! All Correct Answers: " + self.questions[self.questionNum][1].lower())
+        await self.nextQuestion()
+      else:
+        await message.add_reaction("❌")
+
+
+@tree.command(
+  guild=discord.Object(id=GUILD_ID),
+  name="quickplay",
+  description="Set up a quickplay trivia session. Great for last-minute cramming or if you have no friends."
+)
+async def quickplay(interaction: discord.Interaction, topics: BattleType):
+  global quickplay_sessions, registeredPlayers
+
+  if interaction.channel.name != "bots":
+    await interaction.response.send_message("*Error! Quickplays can only be started in <#1173286856381710427>!*")
+    return
+  if "<@" + str(interaction.user.id) + ">" in registeredPlayers:
+    await interaction.response.send_message("*Error! You cannot start a quickplay while registered for a battle!*") 
+    return
+
+  playerID = interaction.user.id
+  for qps in quickplay_sessions:
+    if qps.matchesPlayer(playerID) and qps.active:
+      await interaction.response.send_message("*Error! You are already in a quickplay session!*") 
+      return
+  
+  await interaction.response.send_message("Creating quickplay session for `" + str(topics)[11:] + "`!")
+  new_qps = QuickplaySession()
+  await new_qps.setup(playerID, topics)
+  quickplay_sessions.append(new_qps)
+  
+
+
+@tasks.loop(minutes=5.0)
+async def update_qp_sessions():
+  global quickplay_sessions
+  quickplay_sessions = list(filter(lambda x : x.active, quickplay_sessions))
 
 @tree.command(
   guild=discord.Object(id=GUILD_ID),
@@ -714,6 +834,7 @@ async def on_ready():
   print('We have logged in as {0.user}'.format(bot))
   await tree.sync(guild=discord.Object(id=GUILD_ID))
   change_status.start()
+  update_qp_sessions.start()
 
 from webserver import keep_alive
 
