@@ -268,15 +268,6 @@ async def questionsets(interaction: discord.Interaction):
 async def runbattle(interaction: discord.Interaction, topics: BattleType, scoring: ScoreType, numquestions: int):
   global waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questions, timeLeft, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered, numPlayersNotBots, accuracy
 
-  questions = []
-  
-  topicQuestionSet = QUESTION_SETS[str(topics)]
-  for setFile in topicQuestionSet:
-    questionsFile = open("battles/{}".format(setFile)).read().strip().split("\n")
-    questions += list(map(lambda x : x.split("]"), questionsFile))
-
-  random.shuffle(questions)
-
   if interaction.channel.name != "bots":
     await interaction.response.send_message("*Error! Battles can only be started in <#1173286856381710427>!*")
     return
@@ -290,6 +281,14 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
     await interaction.response.send_message("*Error! There are not enough questions in the question set. You can ask at most `{}` questions for the topic `{}`.*".format(len(questions), str(topics)[11:]))
     return
 
+  questions = []
+  
+  topicQuestionSet = QUESTION_SETS[str(topics)]
+  for setFile in topicQuestionSet:
+    questionsFile = open("battles/{}".format(setFile)).read().strip().split("\n")
+    questions += list(map(lambda x : x.split("]"), questionsFile))
+
+  random.shuffle(questions)
 
   registeredPlayers = ["<@" + str(interaction.user.id) + ">"]
   waitingForPlayers = True
