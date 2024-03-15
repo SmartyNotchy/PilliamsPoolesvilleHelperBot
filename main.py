@@ -698,6 +698,7 @@ class QuickplaySession:
       await self.nextQuestion()
     elif content == "!end":
       self.active = False
+      await message.add_reaction("👋")
       await send_dm(self.player, "Quickplay Session Ended!")
     else:
       correctAns = self.questions[self.questionNum][1].lower().split("/")
