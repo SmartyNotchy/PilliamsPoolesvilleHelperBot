@@ -624,6 +624,17 @@ async def forceregister(interaction: discord.Interaction, player: str):
     registeredPlayers.append(player)
     await interaction.response.send_message("⚔️ " + str(player) + " has been registered for the upcoming battle!")
 
+
+@tree.command(
+  guild=discord.Object(id=GUILD_ID),
+  name="testdm",
+  description="Test if your Discord Account is setup properly to join trivia battles"
+)
+async def register(interaction: discord.Interaction):
+  await interaction.response.send_message("If you can see this message and just received a DM, everything's good to go!")
+  await interaction.channel.send("If you did not receive a DM, refer to https://support.discord.com/hc/en-us/articles/217916488-Blocking-Privacy-Settings.")
+  await send_dm(interaction.user.id, "If you're reading this, everything's all set! Happy trivia battling!")
+
 pass
 ###################################
 ## DISCORD BOT ACTIVITY MESSAGES ##
