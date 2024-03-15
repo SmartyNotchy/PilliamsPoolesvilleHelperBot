@@ -204,6 +204,8 @@ async def on_message(message):
   # RNG yay
   if random.randint(0, 1000) == 420:
     await message.add_reaction("<:StrawberryJam:1107856772615655504>")
+  if random.randint(0, 10000) == 69:
+    await message.add_reaction("<:RainbowBerry:1107431137363644529>")
   
   if message.guild is None:
     for qps in quickplay_sessions:
@@ -706,7 +708,7 @@ class QuickplaySession:
           break
       if isCorrect:
         await message.add_reaction("✅")
-        await send_dm(self.player, "Correct! All Correct Answers: " + self.questions[self.questionNum][1].lower())
+        await send_dm(self.player, "Correct! All Correct Answers: " + self.questions[self.questionNum][1])
         await self.nextQuestion()
       else:
         await message.add_reaction("❌")
