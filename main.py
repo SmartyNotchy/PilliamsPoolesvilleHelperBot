@@ -277,9 +277,6 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
   if numquestions <= 0:
     await interaction.response.send_message("*Error! The battle must ask at least 1 question!*")
     return
-  if numquestions > len(questions):
-    await interaction.response.send_message("*Error! There are not enough questions in the question set. You can ask at most `{}` questions for the topic `{}`.*".format(len(questions), str(topics)[11:]))
-    return
 
   questions = []
   
@@ -290,6 +287,10 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
 
   random.shuffle(questions)
 
+  if numquestions > len(questions):
+    await interaction.response.send_message("*Error! There are not enough questions in the question set. You can ask at most `{}` questions for the topic `{}`.*".format(len(questions), str(topics)[11:]))
+    return
+  
   registeredPlayers = ["<@" + str(interaction.user.id) + ">"]
   waitingForPlayers = True
   battleRunning = False
