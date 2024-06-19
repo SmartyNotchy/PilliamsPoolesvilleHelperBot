@@ -195,8 +195,16 @@ numPlayersAnswered = 0
 
 messagesWithoutBrainrot = 0
 BRAINROT_BLACKLIST = [
-  
+  "skibid",
+  "fanu",
+  "gya",
+  "backshot",
+  "camera man",
+  "nathaniel b",
+  "vro",
+  "aura"
 ]
+
 
 @bot.event
 async def on_message(message):
@@ -250,14 +258,26 @@ async def on_message(message):
   ## BRAINROT TRACKER
   ####
 
-  if message.guild is None:
+  if message.guild is None and str(message.author.id) != "714930955957043360":
     for qps in quickplay_sessions:
       if qps.active and qps.matchesPlayer(message.author.id):
         await qps.parse_msg(message)
   else:
+    for br_keyword in BRAINROT_BLACKLIST:
+      if br_keyword in message.content.lower():
+        if messagesWithoutBrainrot >= 100:
+          await message.add_reaction("❌")
+          staff_channel = bot.get_channel(1253017097273868352)
+          await staff_channel.send("https://discord.com/channels/1106646802905702560/" + str(message.channel.id) + "/" + str(message.id) + " <@" + str(message.author.id) + "> broke a no-brainrot streak of " + str(messagesWithoutBrainrot) + " messages! :skull:")
+        messagesWithoutBrainrot = -1
+        break
     messagesWithoutBrainrot += 1
 
-  
+
+@tree.command(name="nobrainrot", description="View the current no-brainrot message streak.", guild=discord.Object(id=GUILD_ID))
+async def debugcounter(interaction):
+  await interaction.response.send_message(str(messagesWithoutBrainrot), ephemeral=True)
+
 
 
 ####
