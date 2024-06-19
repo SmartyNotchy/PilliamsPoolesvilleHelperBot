@@ -34,7 +34,7 @@ bot = commands.Bot(command_prefix='$', intents = discord.Intents.all())
 tree = bot.tree
 @tree.command(name="active_dev_refresh", description="I hate slash commands I hate slash commands I hate slash commands", guild=discord.Object(id=GUILD_ID))
 async def first_command(interaction):
-  await interaction.response.send_message("Slash commands suck! But your bot needs them in order to get the active developer badge...")
+  await interaction.response.send_message("Slash commands suck! But your bot needs them in order to get the active developer badge...", ephemeral=True)
 
 ############################
 ## DISCORD ADMIN COMMANDS ##
@@ -66,9 +66,20 @@ async def printrules(interaction):
 
     embed = discord.Embed(title="Invitation Process", color=0xAD8460, description="You can suggest people to be invited by directly messaging me (please don't abuse this). If at least 2 admins approve, then an invitation poll will be set up for members of the server. A 2/3 majority is needed for the invitation to be fully approved & sent. If the invitation is rejected by the public, then a new poll for that person cannot be created again for the next month.")
     await ctx.send(embed=embed)
+
+    await interaction.response.send_message("Success!", ephemeral=True)
   else:
-    embed=discord.Embed(title="No Perms <:NotLikeShift:1119797767175409674>", description="Hey, you aren't Pilliam... only Pilliam can use this command!", color=0xFF5733)
-    await ctx.send(embed=embed)
+    await interaction.response.send_message("Nice try. If you actually wanted to see the rules, visit <#1106683398757564476>!", ephemeral=True)
+
+DREAM_LUCK_ACTIVATED = False
+@tree.command(name="dreamluck", description="I hired an astrophysicist, trust me rainbow berry reactions are a lot more common than you think.", guild=discord.Object(id=GUILD_ID))
+async def dreamluck(interaction):
+  global DREAM_LUCK_ACTIVATED
+  if "<@" + str(interaction.user.id) + ">" == "<@714930955957043360>":
+    DREAM_LUCK_ACTIVATED = True
+    await interaction.response.send_message("Rigging the RNG for the next message you send!", ephemeral=True)
+  else:
+    await interaction.response.send_message("... did anything even happen?", ephemeral=True)
 
 ##########################
 ## BATTLE BOT SIMULATOR ##
@@ -215,16 +226,6 @@ async def on_message(message):
   if ("vashi" in message.content.lower() or "vasis" in message.content.lower()) and random.randint(0, 3) == 1:
     await message.add_reaction("<:Vasisht:1196660405225926666>")
 
-  # Battle Registration
-  #if not waitingForPlayers or message.channel != battleChannel:
-  #  return
-
-  #if message.author == bot.user or ("<@" + str(message.author.id) + ">") in registeredPlayers:
-  #  return
-
-  #registeredPlayers.append("<@" + str(message.author.id) + ">")
-  #await message.add_reaction("⚔️")
-
 ####
 ## BATTLE SLASH COMMANDS
 ####
@@ -276,7 +277,7 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
   global waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questions, timeLeft, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered, numPlayersNotBots, accuracy
 
   if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! Battles can only be started in <#1173286856381710427>!*")
+    await interaction.response.send_message("*Error! Battles can only be started in <#1173286856381710427>!*", ephemeral=True)
     return
   if waitingForPlayers or battleRunning or askingTrivia:
     await interaction.response.send_message("*Error! There is already a battle running!*") 
@@ -301,7 +302,7 @@ async def runbattle(interaction: discord.Interaction, topics: BattleType, scorin
   random.shuffle(questions)
 
   if numquestions > len(questions):
-    await interaction.response.send_message("*Error! There are not enough questions in the question set. You can ask at most `{}` questions for the topic `{}`.*".format(len(questions), str(topics)[11:]))
+    await interaction.response.send_message("*Error! There are not enough questions in the question set. You can ask at most `{}` questions for the topic `{}`.*".format(len(questions), str(topics)[11:]), ephemeral=True)
     return
   
   registeredPlayers = ["<@" + str(interaction.user.id) + ">"]
@@ -516,7 +517,7 @@ pass
 async def skip(interaction: discord.Interaction):
   global waitingForPlayers, registeredPlayers, timeLeft
   if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*")
+    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*", ephemeral=True)
     return
   elif not waitingForPlayers:
     await interaction.response.send_message("*Error! There is no countdown to cancel!*")
@@ -552,7 +553,7 @@ async def skip(interaction: discord.Interaction):
 async def skip(interaction: discord.Interaction):
   global waitingForPlayers, registeredPlayers, timeLeft
   if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*")
+    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*", ephemeral=True)
     return
   elif not waitingForPlayers:
     await interaction.response.send_message("*Error! There is no countdown to skip!*")
@@ -575,7 +576,7 @@ async def skip(interaction: discord.Interaction):
 async def register(interaction: discord.Interaction):
   global waitingForPlayers, registeredPlayers, timeLeft
   if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*")
+    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*", ephemeral=True)
     return
   elif not waitingForPlayers:
     await interaction.response.send_message("*Error! There is no battle to register for!*")
@@ -603,7 +604,7 @@ async def register(interaction: discord.Interaction):
 async def unregister(interaction: discord.Interaction):
   global waitingForPlayers, registeredPlayers, timeLeft
   if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*")
+    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*", ephemeral=True)
     return
   elif not waitingForPlayers:
     await interaction.response.send_message("*Error! There is no battle to unregister from!*")
@@ -628,13 +629,13 @@ async def unregister(interaction: discord.Interaction):
 async def forceregister(interaction: discord.Interaction, player: str):
   global waitingForPlayers, registeredPlayers, timeLeft
   if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*")
+    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*", ephemeral=True)
     return
   elif not waitingForPlayers:
     await interaction.response.send_message("*Error! There is no battle to register for!*")
     return
   elif "<@" + str(interaction.user.id) + ">" != "<@714930955957043360>":
-    await interaction.response.send_message("*Error! This command can only be used by <@714930955957043360>!*")
+    await interaction.response.send_message("*Error! This command can only be used by <@714930955957043360>!*", ephemeral=True)
     return
   elif player in registeredPlayers:
     await interaction.response.send_message("*Error! This player is already registered for this battle!*")
@@ -724,19 +725,19 @@ async def quickplay(interaction: discord.Interaction, topics: BattleType):
   global quickplay_sessions, registeredPlayers
 
   if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! Quickplays can only be started in <#1173286856381710427>!*")
+    await interaction.response.send_message("*Error! Quickplays can only be started in <#1173286856381710427>!*", ephemeral=True)
     return
   if "<@" + str(interaction.user.id) + ">" in registeredPlayers:
-    await interaction.response.send_message("*Error! You cannot start a quickplay while registered for a battle!*") 
+    await interaction.response.send_message("*Error! You cannot start a quickplay while registered for a battle!*", ephemeral=True) 
     return
 
   playerID = interaction.user.id
   for qps in quickplay_sessions:
     if qps.matchesPlayer(playerID) and qps.active:
-      await interaction.response.send_message("*Error! You are already in a quickplay session!*") 
+      await interaction.response.send_message("*Error! You are already in a quickplay session! DM the bot `!end` to leave!*", ephemeral=True) 
       return
   
-  await interaction.response.send_message("Creating quickplay session for `" + str(topics)[11:] + "`!")
+  await interaction.response.send_message("Creating quickplay session for `" + str(topics)[11:] + "`!", ephemeral=True)
   new_qps = QuickplaySession()
   await new_qps.setup(playerID, topics)
   quickplay_sessions.append(new_qps)
@@ -754,8 +755,7 @@ async def update_qp_sessions():
   description="Test if your Discord Account is setup properly to join trivia battles"
 )
 async def register(interaction: discord.Interaction):
-  await interaction.response.send_message("If you can see this message and just received a DM, everything's good to go!")
-  await interaction.channel.send("If you did not receive a DM, refer to https://support.discord.com/hc/en-us/articles/217916488-Blocking-Privacy-Settings.")
+  await interaction.response.send_message("If you can see this message and just received a DM, everything's good to go! If you did not receive a DM, refer to https://support.discord.com/hc/en-us/articles/217916488-Blocking-Privacy-Settings.", ephemeral=True)
   await send_dm(interaction.user.id, "If you're reading this, everything's all set! Happy trivia battling!")
 
 pass
