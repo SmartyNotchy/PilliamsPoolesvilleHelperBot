@@ -837,9 +837,6 @@ async def on_ready():
   print('We have logged in as {0.user}'.format(bot))
   await tree.sync(guild=discord.Object(id=GUILD_ID))
   change_status.start()
-  update_qp_sessions.start()
-
-from webserver import keep_alive
 
 print("Attempting Logon")
 
@@ -851,5 +848,6 @@ except discord.HTTPException as e:
   if e.status == 429:
     print("The Discord servers denied the connection for making too many requests")
     print("Get help from https://stackoverflow.com/questions/66724687/in-discord-py-how-to-solve-the-error-for-toomanyrequests")
+    os.system("kill 1")
   else:
     raise e
