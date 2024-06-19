@@ -40,14 +40,20 @@ async def first_command(interaction):
 ## DISCORD ADMIN COMMANDS ##
 ############################
 
+def is_pilliam(intrctn):
+  return "<@" + str(intrctn.user.id) + ">" == "<@714930955957043360>"
+
+def is_pilliam_id(user_id):
+  return "<@" + str(user_id) + ">" == "<@714930955957043360>"
+
 @tree.command(name="printrules", description="Prints the Civilized PHS Server rules. Admin-only.", guild=discord.Object(id=GUILD_ID))
 async def printrules(interaction):
   ctx = interaction.channel
-  if "<@" + str(interaction.user.id) + ">" == "<@714930955957043360>":
+  if is_pilliam(interaction):
     embed = discord.Embed(title="Server Rules", description="This server has stricter rules & management than most other school servers; hence the name \"Civilized PHS SMCS Server.\" If you don't like this, then join another PHS server and accept the responsibility; don't complain about it here.", color=0x3366ff)
     embed.add_field(name="Rule 1 - PG-13", value="Keep things PG-13 (no NSFW). Swears are fine, slurs are not.", inline=False)
     embed.add_field(name="Rule 2 - No Hate Speech", value="No racism, hate, bias, discrimination, sexism, homophobia, etc.", inline=False)
-    embed.add_field(name="Rule 3 - No Serious Threats", value="Anything that could be perceived as a legitimate threat is banned. If it's obviously in jest and not too serious, it's fine. `KYS` is flagged by automod but won't be punished.",inline=False)
+    embed.add_field(name="Rule 3 - No Serious Threats", value="Anything that could be perceived as a legitimate threat is banned. If it's obviously in jest AND not too serious, it's fine. \"KYS\" is flagged by automod but won't be punished.",inline=False)
     embed.add_field(name="Rule 4 - Plagiarism Bad", value="Don't copy-pasting entire assignments.",inline=False)
     embed.add_field(name="Rule 5 - No Spamming", value="Don't spam pings or messages, it's annoying.",inline=False)
     embed.add_field(name="Rule 6 - No Drama", value="This isn't Twitter. Keep this a nice and friendly community. DMs exist for a reason.",inline=False)
@@ -73,7 +79,7 @@ DREAM_LUCK_ACTIVATED = False
 @tree.command(name="dreamluck", description="I hired an astrophysicist, trust me rainbow berry reactions are a lot more common than you think.", guild=discord.Object(id=GUILD_ID))
 async def dreamluck(interaction):
   global DREAM_LUCK_ACTIVATED
-  if "<@" + str(interaction.user.id) + ">" == "<@714930955957043360>":
+  if is_pilliam(interaction):
     DREAM_LUCK_ACTIVATED = True
     await interaction.response.send_message("Rigging the RNG for the next message you send!", ephemeral=True)
   else:
@@ -153,6 +159,17 @@ def getSuffix(i):
   return "th"
 
 
+async def custom_rng_reaction(message, reaction, chance, numtoroll, prereqs=[""]):
+  global DREAM_LUCK_ACTIVATED
+  for prq in prereqs:
+    if prq in message.content.lower():
+      if random.randint(1, chance) == numtoroll or (is_pilliam_id(message.author.id) and DREAM_LUCK_ACTIVATED):
+        await message.add_reaction(reaction)
+        if chance >= 100:
+          staff_channel = bot.get_channel(1253017097273868352)
+          await staff_channel.send("https://discord.com/channels/1106646802905702560/" + str(message.channel.id) + "/" + str(message.id) + " Rolled a " + reaction + " reaction (1/" + str(chance) + ")!")
+      return
+
 ####
 ## Bot Setup
 ####
@@ -176,8 +193,14 @@ timeLeft = 0
 numPlayersNotBots = 0
 numPlayersAnswered = 0
 
+messagesWithoutBrainrot = 0
+BRAINROT_BLACKLIST = [
+  
+]
+
 @bot.event
 async def on_message(message):
+  global messagesWithoutBrainrot
   global quickplay_sessions, waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered, accuracy
 
   if message.author == bot.user:
@@ -210,19 +233,32 @@ async def on_message(message):
       await message.add_reaction("🔎")
       await battleChannel.send("🔎 <@" + str(message.author.id) + "> requested a manual reviewal of Q{0}!".format(questionID+1))
 
-  # RNG yay
-  if random.randint(0, 1000) == 420:
-    await message.add_reaction("<:StrawberryJam:1107856772615655504>")
-  if random.randint(0, 10000) == 69:
-    await message.add_reaction("<:RainbowBerry:1107431137363644529>")
-  
+  ####
+  ## MESSAGE RNG
+  ####
+
+  global DREAM_LUCK_ACTIVATED
+  await custom_rng_reaction(message, "<:StrawberryJam:1107856772615655504>", 1001, 420)
+  await custom_rng_reaction(message, "<:RainbowBerry:1107431137363644529>", 10001, 69)
+  await custom_rng_reaction(message, "<:Vasisht:1196660405225926666>", 10, 1, ["vashi", "vasis"])
+  await custom_rng_reaction(message, "🐺", 10, 1, ["alpha", "beta", "sigma"])
+  if is_pilliam_id(message.author.id) and DREAM_LUCK_ACTIVATED:
+    DREAM_LUCK_ACTIVATED = False
+
+
+  ####
+  ## BRAINROT TRACKER
+  ####
+
   if message.guild is None:
     for qps in quickplay_sessions:
       if qps.active and qps.matchesPlayer(message.author.id):
         await qps.parse_msg(message)
+  else:
+    messagesWithoutBrainrot += 1
 
-  if ("vashi" in message.content.lower() or "vasis" in message.content.lower()) and random.randint(0, 3) == 1:
-    await message.add_reaction("<:Vasisht:1196660405225926666>")
+  
+
 
 ####
 ## BATTLE SLASH COMMANDS
@@ -632,7 +668,7 @@ async def forceregister(interaction: discord.Interaction, player: str):
   elif not waitingForPlayers:
     await interaction.response.send_message("*Error! There is no battle to register for!*")
     return
-  elif "<@" + str(interaction.user.id) + ">" != "<@714930955957043360>":
+  elif not is_pilliam(interaction):
     await interaction.response.send_message("*Error! This command can only be used by <@714930955957043360>!*", ephemeral=True)
     return
   elif player in registeredPlayers:
