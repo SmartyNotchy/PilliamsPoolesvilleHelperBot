@@ -45,26 +45,24 @@ async def printrules(interaction):
   ctx = interaction.channel
   if "<@" + str(interaction.user.id) + ">" == "<@714930955957043360>":
     embed = discord.Embed(title="Server Rules", description="This server has stricter rules & management than most other school servers; hence the name \"Civilized PHS SMCS Server.\" If you don't like this, then join another PHS server and accept the responsibility; don't complain about it here.", color=0x3366ff)
-    embed.add_field(name="Rule 1 - Keep Things PG-13(ish)", value="Keep things PG-13 (no NSFW). Swearing is discouraged, but there won't be consequences for it unless it's excessive & actively making other members uncomfortable.", inline=False)
-    embed.add_field(name="Rule 2 - No Hate Speech", value="No racism, hate, bias, discrimination, sexism, homophobia, etc. Complaining about others **on civilized & logical grounds** is generally accepted, but keep things, well, *civilized*.", inline=False)
-    embed.add_field(name="Rule 3 - No Doxxing", value="I can't really ban possession without being a hypocrite, but be cool & don't share someone's personal info with others. In other words: don't pull a SSSniperWolf.",inline=False)
-    embed.add_field(name="Rule 4 - No (Serious) Threats", value="This should be self-explanatory.",inline=False)
-    embed.add_field(name="Rule 5 - Plagiarism Bad", value="I generally won't care unless you're copy-pasting entire assignments.",inline=False)
-    embed.add_field(name="Rule 6 - No Spamming", value="Don't spam pings or messages, it's annoying.",inline=False)
-    embed.add_field(name="TL;DR", value="This is a civilized school server. If you wouldn't be comfortable with your parents viewing your messages, then rethink what you're posting.",inline=False)
+    embed.add_field(name="Rule 1 - PG-13", value="Keep things PG-13 (no NSFW). Swears are fine, slurs are not.", inline=False)
+    embed.add_field(name="Rule 2 - No Hate Speech", value="No racism, hate, bias, discrimination, sexism, homophobia, etc.", inline=False)
+    embed.add_field(name="Rule 3 - No Serious Threats", value="Anything that could be perceived as a legitimate threat is banned. If it's clearly in jest, it's fine (i.e. 'water tower yourself'), but don't pull an Ariam 2.0 ('i\'m going to shoot everybody except everybody'... that turned out real well for ya, ariam...). 'KYS' and varations are flagged by automod but won't be punished.",inline=False)
+    embed.add_field(name="Rule 4 - Plagiarism Bad", value="Don't copy-pasting entire assignments.",inline=False)
+    embed.add_field(name="Rule 5 - No Spamming", value="Don't spam pings or messages, it's annoying.",inline=False)
+    embed.add_field(name="Rule 6 - No Drama", value="This isn't Twitter. Keep this a nice and friendly community. DMs exist for a reason.",inline=False)
+    embed.add_field(name="TL;DR", value="Assume this server will inevitably get leaked, and don't send anything stupid.",inline=False)
     await ctx.send(embed=embed)
 
-    embed = discord.Embed(title="ToS", color=0x009933, description="By sending messages in this server, you acknowledge that the content of said messages are logged (even if deleted/edited) and may be shown to applicable staff members in extreme cases where the safety and/or wellbeing of students and/or staff is threatened. (TL;DR, don't make any threats or racial cyberbullying or stuff or it WILL be reported to applicable staff members)")
+    embed = discord.Embed(title="Legal Yap", color=0x009933, description="By sending messages in this server, you acknowledge that the content of said messages are logged (even if deleted/edited) and may be shown to applicable staff members in extreme cases where the safety and/or wellbeing of students and/or staff is threatened. (TL;DR, don't make any threats or racial cyberbullying or stuff or it WILL be reported to applicable staff members)")
     await ctx.send(embed=embed)
 
-    embed = discord.Embed(title="Punishments", color=0xFF0000)
-    embed.add_field(name="First Infraction", value="Warning")
-    embed.add_field(name="Second Infraction", value="24 Hour Mute")
-    embed.add_field(name="Third Infraction", value="Permanent Ban")
-    embed.add_field(name="Exceptions", value="I can't predict every incident that will happen, so there are bound to be some edge cases; however, don't count on it.", inline=False)
+    embed = discord.Embed(title="Punishments", color=0xFF0000, description="Literally whatever fits the situtation. You could call this admin abuse, but you really shouldn't be causing enough trouble to necessitate this in the first place.")
     await ctx.send(embed=embed)
 
-    embed = discord.Embed(title="Invitation Process", color=0xAD8460, description="You can suggest people to be invited by directly messaging me (please don't abuse this). If at least 2 admins approve, then an invitation poll will be set up for members of the server. A 2/3 majority is needed for the invitation to be fully approved & sent. If the invitation is rejected by the public, then a new poll for that person cannot be created again for the next month.")
+    embed = discord.Embed(title="Invitation Process", color=0xAD8460, description="How members are added (and removed).")
+    embed.add_field(name="Invitation Polls", value="80% majority required for an invitation. 3 month cooldown in between failed polls for a single person.", inline=False)
+    embed.add_field(name="Expulsion Polls", value="If you really hate someone for some reason, an 85% majority (explicitly between YES and NO) will be enough to kick them out.", inline=False)
     await ctx.send(embed=embed)
 
     await interaction.response.send_message("Success!", ephemeral=True)
