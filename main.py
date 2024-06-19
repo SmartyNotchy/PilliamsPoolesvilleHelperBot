@@ -47,7 +47,7 @@ async def printrules(interaction):
     embed = discord.Embed(title="Server Rules", description="This server has stricter rules & management than most other school servers; hence the name \"Civilized PHS SMCS Server.\" If you don't like this, then join another PHS server and accept the responsibility; don't complain about it here.", color=0x3366ff)
     embed.add_field(name="Rule 1 - PG-13", value="Keep things PG-13 (no NSFW). Swears are fine, slurs are not.", inline=False)
     embed.add_field(name="Rule 2 - No Hate Speech", value="No racism, hate, bias, discrimination, sexism, homophobia, etc.", inline=False)
-    embed.add_field(name="Rule 3 - No Serious Threats", value="Anything that could be perceived as a legitimate threat is banned. If it's clearly in jest, it's fine (i.e. 'water tower yourself'), but don't pull an Ariam 2.0 ('i\'m going to shoot everybody except everybody'... that turned out real well for ya, ariam...). 'KYS' and varations are flagged by automod but won't be punished.",inline=False)
+    embed.add_field(name="Rule 3 - No Serious Threats", value="Anything that could be perceived as a legitimate threat is banned. If it's obviously in jest and not too serious, it's fine. `KYS` is flagged by automod but won't be punished.",inline=False)
     embed.add_field(name="Rule 4 - Plagiarism Bad", value="Don't copy-pasting entire assignments.",inline=False)
     embed.add_field(name="Rule 5 - No Spamming", value="Don't spam pings or messages, it's annoying.",inline=False)
     embed.add_field(name="Rule 6 - No Drama", value="This isn't Twitter. Keep this a nice and friendly community. DMs exist for a reason.",inline=False)
