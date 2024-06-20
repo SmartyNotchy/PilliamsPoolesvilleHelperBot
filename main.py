@@ -66,7 +66,7 @@ async def printrules(interaction):
     embed = discord.Embed(title="Punishments", color=0xFF0000, description="Literally whatever fits the situtation. You could call this admin abuse, but you really shouldn't be causing enough trouble to necessitate this in the first place.")
     await ctx.send(embed=embed)
 
-    embed = discord.Embed(title="Invitation Process", color=0xAD8460, description="How members are added (and removed).")
+    embed = discord.Embed(title="Invitation Process", color=0xAD8460, description="How members are added (and removed). Only admins can create polls.")
     embed.add_field(name="Invitation Polls", value="80% majority required for an invitation. 3 month cooldown in between failed polls for a single person.", inline=False)
     embed.add_field(name="Expulsion Polls", value="If you really hate someone for some reason, an 85% majority (explicitly between YES and NO) will be enough to kick them out.", inline=False)
     await ctx.send(embed=embed)
@@ -248,6 +248,7 @@ async def on_message(message):
   global DREAM_LUCK_ACTIVATED
   await custom_rng_reaction(message, "<:StrawberryJam:1107856772615655504>", 1001, 420)
   await custom_rng_reaction(message, "<:RainbowBerry:1107431137363644529>", 10001, 69)
+  await custom_rng_reaction(message, "<:RainbowBerry:1107431137363644529>", 1000001, 420690)
   await custom_rng_reaction(message, "<:Vasisht:1196660405225926666>", 10, 1, ["vashi", "vasis"])
   await custom_rng_reaction(message, "🐺", 10, 1, ["alpha", "beta", "sigma"])
   if is_pilliam_id(message.author.id) and DREAM_LUCK_ACTIVATED:
