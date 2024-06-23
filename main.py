@@ -66,9 +66,9 @@ async def printrules(interaction):
     embed = discord.Embed(title="Punishments", color=0xFF0000, description="Literally whatever fits the situtation. You could call this admin abuse, but you really shouldn't be causing enough trouble to necessitate this in the first place.")
     await ctx.send(embed=embed)
 
-    embed = discord.Embed(title="Invitation Process", color=0xAD8460, description="How members are added (and removed). Only admins can create polls.")
-    embed.add_field(name="Invitation Polls", value="80% majority required for an invitation. 3 month cooldown in between failed polls for a single person.", inline=False)
-    embed.add_field(name="Expulsion Polls", value="If you really hate someone for some reason, an 85% majority (explicitly between YES and NO) will be enough to kick them out.", inline=False)
+    embed = discord.Embed(title="Invitation Process", color=0xAD8460, description="How members are added (and removed). These polls run for 3 days and are admin-only.")
+    embed.add_field(name="Invitation Polls", value="75% majority required for an invitation. 3 month cooldown in between failed polls for a single person.", inline=False)
+    embed.add_field(name="Expulsion Polls", value="If you really hate someone for some reason, an 90% majority (explicitly between YES and NO) will be enough to kick them out.", inline=False)
     await ctx.send(embed=embed)
 
     await interaction.response.send_message("Success!", ephemeral=True)
@@ -202,7 +202,8 @@ BRAINROT_BLACKLIST = [
   "camera man",
   "nathaniel b",
   "vro",
-  "aura"
+  "aura",
+  "goon"
 ]
 
 
@@ -266,7 +267,7 @@ async def on_message(message):
   else:
     for br_keyword in BRAINROT_BLACKLIST:
       if br_keyword in message.content.lower():
-        if messagesWithoutBrainrot >= 100:
+        if messagesWithoutBrainrot >= 50:
           await message.add_reaction("❌")
           staff_channel = bot.get_channel(1253017097273868352)
           await staff_channel.send("https://discord.com/channels/1106646802905702560/" + str(message.channel.id) + "/" + str(message.id) + " <@" + str(message.author.id) + "> broke a no-brainrot streak of " + str(messagesWithoutBrainrot) + " messages! :skull:")
