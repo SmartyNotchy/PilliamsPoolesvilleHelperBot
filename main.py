@@ -53,7 +53,7 @@ async def printrules(interaction):
     embed = discord.Embed(title="Server Rules", description="This server has stricter rules & management than most other school servers; hence the name \"Civilized PHS SMCS Server.\" If you don't like this, then join another PHS server and accept the responsibility; don't complain about it here.", color=0x3366ff)
     embed.add_field(name="Rule 1 - PG-13", value="Keep things PG-13 (no NSFW). Swears are fine, slurs are not.", inline=False)
     embed.add_field(name="Rule 2 - No Hate Speech", value="No racism, hate, bias, discrimination, sexism, homophobia, etc.", inline=False)
-    embed.add_field(name="Rule 3 - No Serious Threats", value="Anything that could be perceived as a legitimate threat is banned. If it's obviously in jest AND not too serious, it's fine. \"KYS\" is flagged by automod but won't be punished.",inline=False)
+    embed.add_field(name="Rule 3 - No Serious Threats", value="Anything that could be perceived as a legitimate threat is banned. If it's obviously in jest AND not too serious, it's fine. \"KYS\" = AutoMod 1 hour mute.",inline=False)
     embed.add_field(name="Rule 4 - Plagiarism Bad", value="Don't copy-pasting entire assignments.",inline=False)
     embed.add_field(name="Rule 5 - No Spamming", value="Don't spam pings or messages, it's annoying.",inline=False)
     embed.add_field(name="Rule 6 - No Drama", value="This isn't Twitter. Keep this a nice and friendly community. DMs exist for a reason.",inline=False)
@@ -67,7 +67,7 @@ async def printrules(interaction):
     await ctx.send(embed=embed)
 
     embed = discord.Embed(title="Invitation Process", color=0xAD8460, description="How members are added (and removed). These polls run for 3 days and are admin-only.")
-    embed.add_field(name="Invitation Polls", value="75% majority required for an invitation. 3 month cooldown in between failed polls for a single person.", inline=False)
+    embed.add_field(name="Invitation Polls", value="75% majority required for an invitation, or 95% after one day. 3 month cooldown in between failed polls for a single person.", inline=False)
     embed.add_field(name="Expulsion Polls", value="If you really hate someone for some reason, an 90% majority (explicitly between YES and NO) will be enough to kick them out.", inline=False)
     await ctx.send(embed=embed)
 
@@ -203,8 +203,54 @@ BRAINROT_BLACKLIST = [
   "nathaniel b",
   "vro",
   "aura",
-  "goon"
+  "goon",
+  "rizz",
+  "wizz",
+  "only in ohio",
+  "duke dennis",
+  "did you pray today",
+  "baby gronk",
+  "sussy",
+  "sigma alpha",
+  "alpha male",
+  "beta male",
+  "yogurt male",
+  "m the alpha",
+  "grindset",
+  "andrew tate",
+  "freddy fazbear",
+  "smurf cat",
+  "ishowspeed",
+  "ambatakum",
+  "griddy",
+  "kai cenat",
+  "edging",
+  "whopper whopper whopper",
+  "1 2 buckle",
+  "busting it down",
+  "with da sauce",
+  "with the sauce",
+  "john pork",
+  "grimace sh",
+  "amogus",
+  "uncanny",
+  "ayo da pizza",
+  "ayo the pizza",
+  "t-pose",
+  "ugandan knuckles",
+  "family guy moments",
+  "family guy clips",
+  "family guy funny",
+  "subway surfer",
+  "mewing",
+  "quandale dingle",
+  "biggest bird",
+  "brawl stars"
 ]
+BRAINROT_WHITELIST = {
+  "camera man": ["camera mandatory"],
+  "goon": ["lagoon"]
+}
 
 
 @bot.event
@@ -249,7 +295,7 @@ async def on_message(message):
   global DREAM_LUCK_ACTIVATED
   await custom_rng_reaction(message, "<:StrawberryJam:1107856772615655504>", 1001, 420)
   await custom_rng_reaction(message, "<:RainbowBerry:1107431137363644529>", 10001, 69)
-  await custom_rng_reaction(message, "<:RainbowBerry:1107431137363644529>", 1000001, 420690)
+  await custom_rng_reaction(message, "<:ballincat43:1256664028751593493>", 1000001, 420690)
   await custom_rng_reaction(message, "<:Vasisht:1196660405225926666>", 10, 1, ["vashi", "vasis"])
   await custom_rng_reaction(message, "🐺", 10, 1, ["alpha", "beta", "sigma"])
   if is_pilliam_id(message.author.id) and DREAM_LUCK_ACTIVATED:
@@ -266,7 +312,7 @@ async def on_message(message):
         await qps.parse_msg(message)
   else:
     for br_keyword in BRAINROT_BLACKLIST:
-      if br_keyword in message.content.lower():
+      if br_keyword in message.content.lower() and all(not (x in message.content.lower()) for x in BRAINROT_WHITELIST.get(br_keyword, ["A"])):
         if messagesWithoutBrainrot >= 50:
           await message.add_reaction("❌")
           staff_channel = bot.get_channel(1253017097273868352)
@@ -286,11 +332,16 @@ async def debugcounter(interaction):
 ## BATTLE SLASH COMMANDS
 ####
 
-BattleType = Enum(value="BattleType", names=["APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 3", "APUSH Unit 4",\
+BattleType = Enum(value="BattleType", names=["NSL Chapter 1", "NSL Chapter 2", "NSL Chapter 3", "NSL Unit 1 (Ch 1-3)",
+                                             "APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 3", "APUSH Unit 4",\
                                              "APUSH Unit 5", "APUSH Unit 6", "APUSH Unit 7", "APUSH Unit 8", "APUSH All Units"])
 ScoreType = Enum(value="ScoreType", names=["Accuracy 50% Speed 50%", "Accuracy 75% Speed 25%", "Accuracy 90% Speed 10%"])
 
 QUESTION_SETS = {
+  "BattleType.NSL Chapter 1": ["nsl/u1ch1.txt"],
+  "BattleType.NSL Chapter 2": ["nsl/u1ch2.txt"],
+  "BattleType.NSL Chapter 3": ["nsl/u1ch3.txt"],
+  "BattleType.NSL Unit 1 (Ch 1-3)": ["nsl/u1ch1.txt", "nsl/u1ch2.txt", "nsl/u1ch3.txt"],
   "BattleType.APUSH Unit 1": ["apush/unit1.txt"],
   "BattleType.APUSH Unit 2": ["apush/unit2.txt"],
   "BattleType.APUSH Unit 3": ["apush/unit3.txt"],
