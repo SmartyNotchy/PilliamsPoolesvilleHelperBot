@@ -97,3 +97,38 @@ NSL - ||1.1||
 A \_\_\_\_\_ \_\_\_\_\_ is a collection of sovereign states gathered for national interests.
 [ANSWER] Representative Republic
 ----------------------------------------------------------------------------------
+[QUESTION]
+NSL - ||1.2||
+
+Name the representative democracy that best fits the following description:
+*Emphasizes broad involvement of citizens in politics*
+[ANSWER] Participatory,Participatory Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+NSL - ||1.2||
+
+Name the representative democracy that best fits the following description:
+*Citizens vote directly on laws and matters instead of electing representatives*
+[ANSWER] Participatory,Participatory Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+NSL - ||1.2||
+
+Name the representative democracy that best fits the following description:
+*Unwieldy with large populations*
+[ANSWER] Participatory,Participatory Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+NSL - ||1.2||
+
+Name the representative democracy that best fits the following description:
+*The US Constitution allows this at local & state levels*
+[ANSWER] Participatory,Participatory Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+NSL - ||1.2||
+
+Name the representative democracy that best fits the following description:
+*The US Constitution allows this at local & state levels*
+[ANSWER] Participatory,Participatory Democracy
+----------------------------------------------------------------------------------

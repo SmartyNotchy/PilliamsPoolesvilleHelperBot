@@ -824,7 +824,7 @@ class QuickplaySession:
     
     question = self.questions[self.questionNum]
     if self.embedMode:
-      await send_dm_embed(self.player, 0x33ccff, "Quickplay Session - Question #" + str(self.questionNum+1), question[0])
+      await send_dm_embed(self.player, 0x33ccff, "Quickplay Session - Question #" + str(self.questionNum+1) + "/" + str(len(self.questions)), question[0])
     else:
       await send_dm(self.player, "**--------------------------**\n" + question[0] + "**--------------------------**")
 
