@@ -357,7 +357,7 @@ QUESTION_SETS = {
 @tree.command(
     guild=discord.Object(id=GUILD_ID),
     name="questionsets",
-    description="Lists available question sets for use in battles."
+    description="Lists available question sets for use in quickplay sessions."
 )
 
 async def questionsets(interaction: discord.Interaction):
