@@ -309,7 +309,7 @@ async def on_message(message):
   ## BRAINROT TRACKER
   ####
 
-  if message.guild is None and str(message.author.id) != "714930955957043360":
+  if message.guild is None and str(message.author.id) != "819365581899825182":
     for qps in quickplay_sessions:
       if qps.active and qps.matchesPlayer(message.author.id):
         await qps.parse_msg(message)
@@ -342,8 +342,8 @@ QUESTION_SETS = {
   "BattleType.NSL Chapter 1": ["nsl/u1ch1.txt"],
   "BattleType.NSL Chapter 2": ["nsl/u1ch2.txt"],
   "BattleType.NSL Chapter 3": ["nsl/u1ch3.txt"],
-  "BattleType.NSL Unit 1 (Ch 1-3)": ["nsl/u1ch1.txt", "nsl/u1ch2.txt", "nsl/u1ch3.txt"],
-  "BattleType.APUSH Unit 1": ["apush/unit1.txt"],
+  "BattleType.NSL Unit 1 (Ch 1-3)": ["nsl/u1ch1.txt", "nsl/u1ch2.txt", "nsl/u1ch3.txt"]}
+'''"BattleType.APUSH Unit 1": ["apush/unit1.txt"],
   "BattleType.APUSH Unit 2": ["apush/unit2.txt"],
   "BattleType.APUSH Unit 3": ["apush/unit3.txt"],
   "BattleType.APUSH Unit 4": ["apush/unit4.txt"],
@@ -352,7 +352,7 @@ QUESTION_SETS = {
   "BattleType.APUSH Unit 7": ["apush/unit7.txt"],
   "BattleType.APUSH Unit 8": ["apush/unit8.txt"],
   "BattleType.APUSH All Units": ["apush/unit1.txt", "apush/unit2.txt", "apush/unit3.txt", "apush/unit4.txt", "apush/unit5.txt", "apush/unit6.txt", "apush/unit7.txt", "apush/unit8.txt"]
-}
+}'''
 
 @tree.command(
     guild=discord.Object(id=GUILD_ID),
@@ -368,7 +368,7 @@ async def questionsets(interaction: discord.Interaction):
     for setFile in value:
       #print(setFile)
       questionsFile = open("battles/{}".format(setFile)).read().strip().split("\n")
-      questions += list(map(lambda x : x.split("]"), questionsFile))
+      questions += parseQuestionsFromTxt(questionsFile)
     embed.add_field(name=(key[11:]), value="{} Questions".format(len(questions)))
   
   await interaction.response.send_message(embed=embed)
@@ -823,7 +823,7 @@ class QuickplaySession:
     self.lastMessage = datetime.datetime.now()
     if content == "!skip":
       await message.add_reaction("⏭️")
-      await send_dm(self.player, "Skipped! Answers: " + self.questions[self.questionNum][1].lower().split(",").join(", "))
+      await send_dm(self.player, "Skipped! Answers: " + ", ".join(self.questions[self.questionNum][1].split(",")))
       await self.nextQuestion()
     elif content == "!end":
       self.active = False
@@ -838,7 +838,7 @@ class QuickplaySession:
           break
       if isCorrect:
         await message.add_reaction("✅")
-        await send_dm(self.player, "Correct! All Correct Answers: " + self.questions[self.questionNum][1].lower().split(",").join(", "))
+        await send_dm(self.player, "Correct! All Correct Answers: " + ", ".join(self.questions[self.questionNum][1].split(",")))
         await self.nextQuestion()
       else:
         await message.add_reaction("❌")
@@ -874,6 +874,7 @@ quickplay_sessions_expired = []
 def check_active(qps, time_now):
   global quickplay_sessions_expired
   if time_now - qps.lastMessage > datetime.timedelta(minutes=5):
+    qps.active = False
     quickplay_sessions_expired.append(qps)
     return False
   return True
