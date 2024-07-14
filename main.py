@@ -772,15 +772,18 @@ def parseQuestionsFromTxt(txtLines):
     if "[QUESTION]" in line:
       assert not reading_q
       reading_q = True
-      res_qlist.append([""])
+      res_qlist.append(["", "Unknown Topic", ""])
     elif reading_q:
       if "[ANSWER]" in line:
         reading_q = False
         line = line[9:]
         #res_qlist[-1][-1] += "**--------------------------**"
-        res_qlist[-1].append(line)
+        res_qlist[-1][2] = line
+      elif "[TOPIC]" in line:
+        res_qlist[-1][1] = line[8:]
+        res_qlist[-1][0] += "Topic: ||`" + line[8:] + "`||\n"
       else:
-        res_qlist[-1][-1] += line + "\n"
+        res_qlist[-1][0] += line + "\n"
   
   return res_qlist
 
@@ -796,7 +799,14 @@ class QuickplaySession:
     self.lastMessage = datetime.datetime.now()
     self.questions = []
     self.questionNum = -1
-    
+    self.topicStats = {}
+    self.stats = {
+      "correct": 0,
+      "incorrect": 0,
+      "firsttry": 0,
+      "skipped": 0
+    }
+
     topicQuestionSet = QUESTION_SETS[str(topic)]
     for setFile in topicQuestionSet:
       questionsFile = open("battles/{}".format(setFile)).read().strip().split("\n")
@@ -804,12 +814,19 @@ class QuickplaySession:
 
     random.shuffle(self.questions)
 
-    if self.embedMode:
-      await send_dm_embed(self.player, 0x9933ff, "Quickplay Session - " + str(topic)[11:], "Use `!skip` to skip a question.\nUse `!end` to end this quickplay session.\nUse `!embedtoggle` to toggle message styles.")
-    else:
-      await send_dm(self.player, "**--- Quickplay Session ---**")
-      await send_dm(self.player, "Topic: `" + str(topic)[11:] + "`\nUse `!skip` to skip a question.\nUse `!end` to end this quickplay session.\nUse `!embedtoggle` to toggle message styles.")
+    await self.sendInfo()
     await self.nextQuestion()
+
+  async def sendInfo(self):
+    cmdInfoString = "Question Set: `" + str(self.topic)[11:] + "`\nProgress: `" + str(max(self.questionNum, 0)) + "/" + str(len(self.questions)) + "`\n\nUse `!skip` to skip a question.\nUse `!end` to end this quickplay session.\nUse `!embedtoggle` to toggle message styles.\nUse `!stats` to view session stats. Stats are also sent on session end.\nUse `!info` to view this info text."
+    if self.embedMode:
+      await send_dm_embed(self.player, 0x9933ff, "Quickplay Session Info", cmdInfoString)
+    else:
+      await send_dm(self.player, "**--- Quickplay Session Info ---**")
+      await send_dm(self.player, cmdInfoString)
+  
+  async def sendStats(self):
+    pass
 
   async def nextQuestion(self):
     self.questionNum += 1
@@ -818,6 +835,7 @@ class QuickplaySession:
         await send_dm_embed(self.player, 0xff0000, "Quickplay Session Completed!", "Congrats, you've completed the question set! This quickplay session has been ended. Feel free to start a new one anytime!")
       else:
         await send_dm(self.player, "Congrats, you've completed the question set! This quickplay session has been ended.")
+      await self.sendStats()
       self.active = False
       return
     
@@ -836,10 +854,10 @@ class QuickplaySession:
     self.lastMessage = datetime.datetime.now()
     if content == "!skip":
       if self.embedMode:
-        await send_dm_embed(self.player, 0x99ddff, "Skipped!", "All Accepted Answers:\n" + "\n".join("- " + x for x in self.questions[self.questionNum][1].split(",")))
+        await send_dm_embed(self.player, 0x99ddff, "Skipped!", "All Accepted Answers:\n" + "\n".join("- " + x for x in self.questions[self.questionNum][2].split(",")))
       else:
         await message.add_reaction("⏭️")
-        await send_dm(self.player, "Skipped! Answers: " + ", ".join(self.questions[self.questionNum][1].split(",")))
+        await send_dm(self.player, "Skipped! Answers: " + ", ".join(self.questions[self.questionNum][2].split(",")))
       await self.nextQuestion()
     elif content == "!end":
       self.active = False
@@ -855,8 +873,18 @@ class QuickplaySession:
       else:
         await message.add_reaction("🗃️")
         await send_dm(self.player, "Embed Mode disabled!")
+    elif content == "!info":
+      await self.sendInfo()
+    elif content == "!stats":
+      await self.sendStats()
+    elif len(content) > 0 and content[0] == "!":
+      if self.embedMode:
+        await send_dm_embed(self.player, 0xff0000, "Invalid Command!", "Use `!info` to view a list of commands.")
+      else:
+        await message.add_reaction("🚧")
+        await send_dm(self.player, "Invalid Command! Use `!info` to view a list of commands.")
     else:
-      correctAns = self.questions[self.questionNum][1].split(",")
+      correctAns = self.questions[self.questionNum][2].split(",")
       isCorrect = False
       for ca in correctAns:
         if ("[EX] " in ca and content == ca[5:].strip().lower()) or (not ("[EX] " in ca) and similar(ca, content) > 0.777):
@@ -864,10 +892,10 @@ class QuickplaySession:
           break
       if isCorrect:
         if self.embedMode:
-          await send_dm_embed(self.player, 0x33cc33, "Correct!", "All Accepted Answers:\n" + "\n".join("- " + x for x in self.questions[self.questionNum][1].split(",")))
+          await send_dm_embed(self.player, 0x33cc33, "Correct!", "All Accepted Answers:\n" + "\n".join("- " + x for x in self.questions[self.questionNum][2].split(",")))
         else:
           await message.add_reaction("✅")
-          await send_dm(self.player, "Correct! All Correct Answers: " + ", ".join(self.questions[self.questionNum][1].split(",")))
+          await send_dm(self.player, "Correct! All Correct Answers: " + ", ".join(self.questions[self.questionNum][2].split(",")))
         await self.nextQuestion()
       else:
         await message.add_reaction("❌")
@@ -876,14 +904,14 @@ class QuickplaySession:
 @tree.command(
   guild=discord.Object(id=GUILD_ID),
   name="quickplay",
-  description="Set up a quickplay trivia session. Great for last-minute cramming or if you have no friends."
+  description="Set up a quickplay trivia session."
 )
 async def quickplay(interaction: discord.Interaction, topics: BattleType):
   global quickplay_sessions, registeredPlayers
 
-  if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! Quickplays can only be started in <#1173286856381710427>!*", ephemeral=True)
-    return
+  #if interaction.channel.name != "bots":
+  #  await interaction.response.send_message("*Error! Quickplays can only be started in <#1173286856381710427>!*", ephemeral=True)
+  #  return
   if "<@" + str(interaction.user.id) + ">" in registeredPlayers:
     await interaction.response.send_message("*Error! You cannot start a quickplay while registered for a battle!*", ephemeral=True) 
     return
@@ -902,7 +930,7 @@ async def quickplay(interaction: discord.Interaction, topics: BattleType):
 quickplay_sessions_expired = []
 def check_active(qps, time_now):
   global quickplay_sessions_expired
-  if time_now - qps.lastMessage > datetime.timedelta(hours=3):
+  if time_now - qps.lastMessage > datetime.timedelta(hours=12):
     qps.active = False
     quickplay_sessions_expired.append(qps)
     return False
@@ -918,6 +946,7 @@ async def update_qp_sessions():
       await send_dm_embed(qps.player, 0xff0000, "👋 Quickplay Session Closed!", "This quickplay session has been closed due to inactivity.\nFeel free to start a new one anytime.")
     else:
       await send_dm(qps.player, "👋 This quickplay session has been closed due to inactivity. Feel free to start a new one anytime.")
+    await qps.sendStats()
   quickplay_sessions_expired = []
 
 @tree.command(

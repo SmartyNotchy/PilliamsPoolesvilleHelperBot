@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.1||
+[TOPIC] NSL 1.1
 
 What message did Hobbes & *The Leviathan* send?
 A: Everyone gives up rights so a leader can run for the good of society
@@ -10,7 +10,7 @@ D: The government has defined & limited powers (checks & balances, branches)
 [ANSWER] [EX] A
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.1||
+[TOPIC] NSL 1.1
 
 Which Enlightenment author believed that everybody gave up rights so leaders could run society?
 A: Hobbes (*The Leviathan*)
@@ -20,7 +20,7 @@ D: Montesquieu (*The Spirit of the Laws*)
 [ANSWER] [EX] A
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.1||
+[TOPIC] NSL 1.1
 
 What message did John Locke and Natural Law send?
 A: Everyone gives up rights so a leader can run for the good of society
@@ -30,7 +30,7 @@ D: The government has defined & limited powers (checks & balances, branches)
 [ANSWER] [EX] B
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.1||
+[TOPIC] NSL 1.1
 
 Which Enlightenment author believed that nobody should be subjected to political rule without their consent?
 A: Hobbes (*The Leviathan*)
@@ -40,7 +40,7 @@ D: Montesquieu (*The Spirit of the Laws*)
 [ANSWER] [EX] B
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.1||
+[TOPIC] NSL 1.1
 
 What message did Rosseau & *The Social Contract* send?
 A: Everyone gives up rights so a leader can run for the good of society
@@ -50,7 +50,7 @@ D: The government has defined & limited powers (checks & balances, branches)
 [ANSWER] [EX] C
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.1||
+[TOPIC] NSL 1.1
 
 Which Enlightenment author believed that power rested with the people?
 A: Hobbes (*The Leviathan*)
@@ -60,7 +60,7 @@ D: Montesquieu (*The Spirit of the Laws*)
 [ANSWER] [EX] C
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.1||
+[TOPIC] NSL 1.1
 
 What message did Montesquieu and *The Spirit of the Laws* send?
 A: Everyone gives up rights so a leader can run for the good of society
@@ -70,7 +70,7 @@ D: The government has defined & limited powers (checks & balances, branches)
 [ANSWER] [EX] D
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.1||
+[TOPIC] NSL 1.1
 
 Which Enlightenment author believed in checks & balances in branches across the government?
 A: Hobbes (*The Leviathan*)
@@ -80,53 +80,53 @@ D: Montesquieu (*The Spirit of the Laws*)
 [ANSWER] [EX] D
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.1||
+[TOPIC] NSL 1.1
 
 This document was written to provide a moral & legal justification for the Revolution.
 [ANSWER] Declaration of Independence
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.1||
+[TOPIC] NSL 1.1
 
 This document was written to replace the ineffective Articles of Confederation.
 [ANSWER] Constitution,US Constitution
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.1||
+[TOPIC] NSL 1.1
 
 A \_\_\_\_\_ \_\_\_\_\_ is a collection of sovereign states gathered for national interests.
 [ANSWER] Representative Republic
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.2||
+[TOPIC] NSL 1.2
 
 Name the representative democracy that best fits the following description:
 *Emphasizes broad involvement of citizens in politics*
 [ANSWER] Participatory,Participatory Democracy
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.2||
+[TOPIC] NSL 1.2
 
 Name the representative democracy that best fits the following description:
 *Citizens vote directly on laws and matters instead of electing representatives*
 [ANSWER] Participatory,Participatory Democracy
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.2||
+[TOPIC] NSL 1.2
 
 Name the representative democracy that best fits the following description:
 *Unwieldy with large populations*
 [ANSWER] Participatory,Participatory Democracy
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.2||
+[TOPIC] NSL 1.2
 
 Name the representative democracy that best fits the following description:
 *The US Constitution allows this at local & state levels*
 [ANSWER] Participatory,Participatory Democracy
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - ||1.2||
+[TOPIC] NSL 1.2
 
 Name the representative democracy that best fits the following description:
 *The US Constitution allows this at local & state levels*
