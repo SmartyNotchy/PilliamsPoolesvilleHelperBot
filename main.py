@@ -15,6 +15,8 @@ import math
 import os
 import random
 
+import datetime
+
 from difflib import SequenceMatcher
 
 print("Modules Loaded")
@@ -212,6 +214,7 @@ BRAINROT_BLACKLIST = [
   "baby gronk",
   "sussy",
   "sigma alpha",
+  "sigma male",
   "alpha male",
   "beta male",
   "yogurt male",
@@ -233,11 +236,9 @@ BRAINROT_BLACKLIST = [
   "john pork",
   "grimace sh",
   "amogus",
-  "uncanny",
   "ayo da pizza",
   "ayo the pizza",
   "t-pose",
-  "ugandan knuckles",
   "family guy moments",
   "family guy clips",
   "family guy funny",
@@ -248,7 +249,7 @@ BRAINROT_BLACKLIST = [
   "brawl stars"
 ]
 BRAINROT_WHITELIST = {
-  "camera man": ["camera mandatory"],
+  "camera man": ["camera mand"],
   "goon": ["lagoon"]
 }
 
@@ -261,6 +262,7 @@ async def on_message(message):
   if message.author == bot.user:
     return
 
+  '''
   # Trivia Scores
   if message.guild is None and ("<@" + str(message.author.id) + ">") in registeredPlayers and askingTrivia and inQuestion and (not ("<@" + str(message.author.id) + ">") in [x[0] for x in scores[questionID]]):
     correctAns = questions[questionID][1].lower().split("/")
@@ -287,6 +289,7 @@ async def on_message(message):
     if "!bad" in message.content.lower():
       await message.add_reaction("🔎")
       await battleChannel.send("🔎 <@" + str(message.author.id) + "> requested a manual reviewal of Q{0}!".format(questionID+1))
+  '''
 
   ####
   ## MESSAGE RNG
@@ -332,9 +335,7 @@ async def debugcounter(interaction):
 ## BATTLE SLASH COMMANDS
 ####
 
-BattleType = Enum(value="BattleType", names=["NSL Chapter 1", "NSL Chapter 2", "NSL Chapter 3", "NSL Unit 1 (Ch 1-3)",
-                                             "APUSH Unit 1", "APUSH Unit 2", "APUSH Unit 3", "APUSH Unit 4",\
-                                             "APUSH Unit 5", "APUSH Unit 6", "APUSH Unit 7", "APUSH Unit 8", "APUSH All Units"])
+BattleType = Enum(value="BattleType", names=["NSL Chapter 1", "NSL Chapter 2", "NSL Chapter 3", "NSL Unit 1 (Ch 1-3)"])
 ScoreType = Enum(value="ScoreType", names=["Accuracy 50% Speed 50%", "Accuracy 75% Speed 25%", "Accuracy 90% Speed 10%"])
 
 QUESTION_SETS = {
@@ -360,7 +361,7 @@ QUESTION_SETS = {
 )
 
 async def questionsets(interaction: discord.Interaction):
-  embed = discord.Embed(title="Trivia Question Sets", description="List of question sets for use in trivia battles.", color=0x3366ff)
+  embed = discord.Embed(title="Trivia Question Sets", description="List of question sets for use in quickplay sessions.", color=0x3366ff)
   
   for (key, value) in QUESTION_SETS.items():
     questions = []
@@ -373,7 +374,7 @@ async def questionsets(interaction: discord.Interaction):
   await interaction.response.send_message(embed=embed)
 
 
-
+'''
 @tree.command(
   guild=discord.Object(id=GUILD_ID),
   name="battle",
@@ -756,8 +757,27 @@ async def forceregister(interaction: discord.Interaction, player: str):
     
   registeredPlayers.append(player)
   await interaction.response.send_message("⚔️ " + str(player) + " has been registered for the upcoming battle!")
+'''
 
-
+def parseQuestionsFromTxt(txtLines):
+  res_qlist = []
+  reading_q = False
+  for line in txtLines:
+    line = line.strip()
+    if "[QUESTION]" in line:
+      assert not reading_q
+      reading_q = True
+      res_qlist.append(["**--------------------------**\n"])
+    elif reading_q:
+      if "[ANSWER]" in line:
+        reading_q = False
+        line = line[9:]
+        res_qlist[-1][-1] += "**--------------------------**"
+        res_qlist[-1].append(line)
+      else:
+        res_qlist[-1][-1] += line + "\n"
+  
+  return res_qlist
 
 
 quickplay_sessions = []
@@ -767,14 +787,14 @@ class QuickplaySession:
     self.player = player
     self.topic = topic
     self.active = True
-
+    self.lastMessage = datetime.datetime.now()
     self.questions = []
     self.questionNum = -1
     
     topicQuestionSet = QUESTION_SETS[str(topic)]
     for setFile in topicQuestionSet:
       questionsFile = open("battles/{}".format(setFile)).read().strip().split("\n")
-      self.questions += list(map(lambda x : x.split("]"), questionsFile))
+      self.questions += parseQuestionsFromTxt(questionsFile)
 
     random.shuffle(self.questions)
 
@@ -793,31 +813,32 @@ class QuickplaySession:
     
     
     question = self.questions[self.questionNum]
-    await send_dm(self.player, "--------------------\n" + question[0])
+    await send_dm(self.player, question[0])
 
   def matchesPlayer(self, other):
     return self.player == other
 
   async def parse_msg(self, message):
-    content = message.content.lower()
+    content = message.content.lower().strip()
+    self.lastMessage = datetime.datetime.now()
     if content == "!skip":
       await message.add_reaction("⏭️")
-      await send_dm(self.player, "Skipped! Answers: " + self.questions[self.questionNum][1].lower())
+      await send_dm(self.player, "Skipped! Answers: " + self.questions[self.questionNum][1].lower().split(",").join(", "))
       await self.nextQuestion()
     elif content == "!end":
       self.active = False
       await message.add_reaction("👋")
       await send_dm(self.player, "Quickplay Session Ended!")
     else:
-      correctAns = self.questions[self.questionNum][1].lower().split("/")
+      correctAns = self.questions[self.questionNum][1].split(",")
       isCorrect = False
       for ca in correctAns:
-        if similar(ca, content) > 0.777:
+        if ("[EX] " in ca and content == ca[5:].strip().lower()) or (not ("[EX] " in ca) and similar(ca, content) > 0.777):
           isCorrect = True
           break
       if isCorrect:
         await message.add_reaction("✅")
-        await send_dm(self.player, "Correct! All Correct Answers: " + self.questions[self.questionNum][1])
+        await send_dm(self.player, "Correct! All Correct Answers: " + self.questions[self.questionNum][1].lower().split(",").join(", "))
         await self.nextQuestion()
       else:
         await message.add_reaction("❌")
@@ -848,13 +869,23 @@ async def quickplay(interaction: discord.Interaction, topics: BattleType):
   new_qps = QuickplaySession()
   await new_qps.setup(playerID, topics)
   quickplay_sessions.append(new_qps)
-  
 
+quickplay_sessions_expired = []
+def check_active(qps, time_now):
+  global quickplay_sessions_expired
+  if time_now - qps.lastMessage > datetime.timedelta(minutes=5):
+    quickplay_sessions_expired.append(qps)
+    return False
+  return True
 
 @tasks.loop(minutes=5.0)
 async def update_qp_sessions():
-  global quickplay_sessions
-  quickplay_sessions = list(filter(lambda x : x.active, quickplay_sessions))
+  global quickplay_sessions, quickplay_sessions_expired
+  time_now = datetime.datetime.now()
+  quickplay_sessions = list(filter(lambda x : x.active and check_active(x, time_now), quickplay_sessions))
+  for qps in quickplay_sessions_expired:
+    await send_dm(qps.player, "👋 This quickplay session has been closed due to inactivity. Feel free to start a new one anytime.")
+  quickplay_sessions_expired = []
 
 @tree.command(
   guild=discord.Object(id=GUILD_ID),
