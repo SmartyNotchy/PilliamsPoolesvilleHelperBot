@@ -1,59 +1,99 @@
-[QUESTION]
-NSL - 1.1
-
-Which Enlightenment author wrote *The Leviathan*?
-- Hobbes
-- John Locke
-- Rosseau
-- Montesquieu
-[ANSWER] Hobbes,[EX] This is a really long test phrase,Hooby Jr
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - 1.1
+NSL - ||1.1||
 
-Which Enlightenment author wrote *The Leviathan 2*?
-- Hobbes
-- John Locke
-- Rosseau
-- Montesquieu
-[ANSWER] Hobbes,[EX] This is a really long test phrase,Herbert Hoover
+What message did Hobbes & *The Leviathan* send?
+A: Everyone gives up rights so a leader can run for the good of society
+B: No one can be subjected to political rule without consent
+C: Power rests with the people, governtment officials carry out laws
+D: The government has defined & limited powers (checks & balances, branches)
+[ANSWER] [EX] A
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - 1.1
+NSL - ||1.1||
 
-Which Enlightenment author wrote *The Leviathan 2*?
-- Hobbes
-- John Locke
-- Rosseau
-- Montesquieu
-[ANSWER] Hobbes,[EX] This is a really long test phrase,Herbert Hoover
+Which Enlightenment author believed that everybody gave up rights so leaders could run society?
+A: Hobbes (*The Leviathan*)
+B: John Locke (Natural Law)
+C: Rosseau (*The Social Contract*)
+D: Montesquieu (*The Spirit of the Laws*)
+[ANSWER] [EX] A
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - 1.1
+NSL - ||1.1||
 
-Which Enlightenment author wrote *The Leviathan 2*?
-- Hobbes
-- John Locke
-- Rosseau
-- Montesquieu
-[ANSWER] Hobbes,[EX] This is a really long test phrase,Herbert Hoover
+What message did John Locke and Natural Law send?
+A: Everyone gives up rights so a leader can run for the good of society
+B: No one can be subjected to political rule without consent
+C: Power rests with the people, governtment officials carry out laws
+D: The government has defined & limited powers (checks & balances, branches)
+[ANSWER] [EX] B
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - 1.1
+NSL - ||1.1||
 
-Which Enlightenment author wrote *The Leviathan 2*?
-- Hobbes
-- John Locke
-- Rosseau
-- Montesquieu
-[ANSWER] Hobbes,[EX] This is a really long test phrase,Herbert Hoover
+Which Enlightenment author believed that nobody should be subjected to political rule without their consent?
+A: Hobbes (*The Leviathan*)
+B: John Locke (Natural Law)
+C: Rosseau (*The Social Contract*)
+D: Montesquieu (*The Spirit of the Laws*)
+[ANSWER] [EX] B
 ----------------------------------------------------------------------------------
 [QUESTION]
-NSL - 1.1
+NSL - ||1.1||
 
-Which Enlightenment author wrote *The Leviathan 2*?
-- Hobbes
-- John Locke
-- Rosseau
-- Montesquieu
-[ANSWER] Hobbes,[EX] This is a really long test phrase,Herbert Hoover
+What message did Rosseau & *The Social Contract* send?
+A: Everyone gives up rights so a leader can run for the good of society
+B: No one can be subjected to political rule without consent
+C: Power rests with the people, governtment officials carry out laws
+D: The government has defined & limited powers (checks & balances, branches)
+[ANSWER] [EX] C
+----------------------------------------------------------------------------------
+[QUESTION]
+NSL - ||1.1||
+
+Which Enlightenment author believed that power rested with the people?
+A: Hobbes (*The Leviathan*)
+B: John Locke (Natural Law)
+C: Rosseau (*The Social Contract*)
+D: Montesquieu (*The Spirit of the Laws*)
+[ANSWER] [EX] C
+----------------------------------------------------------------------------------
+[QUESTION]
+NSL - ||1.1||
+
+What message did Montesquieu and *The Spirit of the Laws* send?
+A: Everyone gives up rights so a leader can run for the good of society
+B: No one can be subjected to political rule without consent
+C: Power rests with the people, governtment officials carry out laws
+D: The government has defined & limited powers (checks & balances, branches)
+[ANSWER] [EX] D
+----------------------------------------------------------------------------------
+[QUESTION]
+NSL - ||1.1||
+
+Which Enlightenment author believed in checks & balances in branches across the government?
+A: Hobbes (*The Leviathan*)
+B: John Locke (Natural Law)
+C: Rosseau (*The Social Contract*)
+D: Montesquieu (*The Spirit of the Laws*)
+[ANSWER] [EX] D
+----------------------------------------------------------------------------------
+[QUESTION]
+NSL - ||1.1||
+
+This document was written to provide a moral & legal justification for the Revolution.
+[ANSWER] Declaration of Independence
+----------------------------------------------------------------------------------
+[QUESTION]
+NSL - ||1.1||
+
+This document was written to replace the ineffective Articles of Confederation.
+[ANSWER] Constitution,US Constitution
+----------------------------------------------------------------------------------
+[QUESTION]
+NSL - ||1.1||
+
+A \_\_\_\_\_ \_\_\_\_\_ is a collection of sovereign states gathered for national interests.
+[ANSWER] Representative Republic
+----------------------------------------------------------------------------------

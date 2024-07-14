@@ -902,7 +902,7 @@ async def quickplay(interaction: discord.Interaction, topics: BattleType):
 quickplay_sessions_expired = []
 def check_active(qps, time_now):
   global quickplay_sessions_expired
-  if time_now - qps.lastMessage > datetime.timedelta(minutes=5):
+  if time_now - qps.lastMessage > datetime.timedelta(hours=3):
     qps.active = False
     quickplay_sessions_expired.append(qps)
     return False
@@ -915,7 +915,7 @@ async def update_qp_sessions():
   quickplay_sessions = list(filter(lambda x : x.active and check_active(x, time_now), quickplay_sessions))
   for qps in quickplay_sessions_expired:
     if qps.embedMode:
-      await send_dm_embed(qps.player, 0xff0000, "👋 Quickplay Session Closed!", "This quickplay session has been closed due to inactivity. Feel free to start a new one anytime.")
+      await send_dm_embed(qps.player, 0xff0000, "👋 Quickplay Session Closed!", "This quickplay session has been closed due to inactivity.\nFeel free to start a new one anytime.")
     else:
       await send_dm(qps.player, "👋 This quickplay session has been closed due to inactivity. Feel free to start a new one anytime.")
   quickplay_sessions_expired = []
