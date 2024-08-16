@@ -204,7 +204,7 @@ The Federalists supported a (strong/weak) federal government.
 [TOPIC] NSL 1.2
 
 *Federalist No. \_\_* argued about the effectiveness of representatives and the division of national & local issues.
-[ANSWER] [EX]10
+[ANSWER] [EX] 10
 ----------------------------------------------------------------------------------
 [QUESTION]
 [TOPIC] NSL 1.2
@@ -214,7 +214,7 @@ A: Seperate state govts. should be loosely tied together by a weak federal govt.
 B: All issues should be handled by the federal govt; state governments should only enforce national decisions.
 C: Electors per state were ineffective; instead, state govts. should unanimously agree on national issues.
 D: National issues should be left to the federal govt., and state issues to state govt.
-[ANSWER] [EX]D
+[ANSWER] [EX] D
 ----------------------------------------------------------------------------------
 [QUESTION]
 [TOPIC] NSL 1.2
@@ -226,7 +226,7 @@ This political group opposed the full ratification of the Constitution.
 [TOPIC] NSL 1.2
 
 *Brutus No. \_\_* argued that the federal government should be weak & loosely tie together state govts.
-[ANSWER] [EX]1
+[ANSWER] [EX] 1
 ----------------------------------------------------------------------------------
 [QUESTION]
 [TOPIC] NSL 1.2
@@ -236,7 +236,7 @@ A: Seperate state govts. should be loosely tied together by a weak federal govt.
 B: All issues should be handled by the federal govt; state governments should only enforce national decisions.
 C: Electors per state were ineffective; instead, state govts. should unanimously agree on national issues.
 D: National issues should be left to the federal govt., and state issues to state govt.
-[ANSWER] [EX]A
+[ANSWER] [EX] A
 ----------------------------------------------------------------------------------
 [QUESTION]
 [TOPIC] NSL 1.2
@@ -261,7 +261,7 @@ Under the Articles of Confederation, the (state/federal) govt. was more powerful
 [TOPIC] NSL 1.3
 
 *Federalist No. \_\_* addressed the "mischiefs of faction" handled by the Constitution.
-[ANSWER] [EX]10
+[ANSWER] [EX] 10
 ----------------------------------------------------------------------------------
 [QUESTION]
 [TOPIC] NSL 1.3
@@ -277,7 +277,7 @@ A: Factions are inevitable, and no form of government can stop them, so no need 
 B: Factions will inevitably rise and fight against each other, preventing laws benefiting the common good under a large central govt.
 C: Factions would be stalled and frustrated under the Constitution, preventing them from overtaking multiple states.
 D: Factions would never form, due to constituents being able to vote them out and disband them.
-[ANSWER] [EX]C
+[ANSWER] [EX] C
 ----------------------------------------------------------------------------------
 [QUESTION]
 [TOPIC] NSL 1.3
@@ -289,7 +289,7 @@ Congress's power to take any "\_\_\_\_\_\_\_\_\_ \_\_\_ \_\_\_\_\_\_" actions wa
 [TOPIC] NSL 1.3
 
 *Brutus No. \_\_* argued that the "necessary and proper" and supremacy clauses gave the federal govt. unlimited power.
-[ANSWER] [EX]1
+[ANSWER] [EX] 1
 ----------------------------------------------------------------------------------
 [QUESTION]
 [TOPIC] NSL 1.3
@@ -299,7 +299,7 @@ A: They were unnecessary & ineffective
 B: They gave the federal govt. too much power
 C: They would slow down lawmaking, making Congress ineffective in emergencies
 D: They were appropriate ways to allow Congress to pass critical legislation
-[ANSWER] [EX]B
+[ANSWER] [EX] B
 ----------------------------------------------------------------------------------
 [QUESTION]
 [TOPIC] NSL 1.3
@@ -309,5 +309,5 @@ A: Factions are inevitable, and no form of government can stop them, so no need 
 B: Factions will inevitably rise and fight against each other, preventing laws benefiting the common good under a large central govt.
 C: Factions would be stalled and frustrated under the Constitution, preventing them from overtaking multiple states.
 D: Factions would never form, due to constituents being able to vote them out and disband them.
-[ANSWER] [EX]B
+[ANSWER] [EX] B
 ----------------------------------------------------------------------------------

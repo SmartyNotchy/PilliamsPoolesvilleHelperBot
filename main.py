@@ -360,17 +360,8 @@ QUESTION_SETS = {
   "BattleType.NSL Chapter 1": ["nsl/u1ch1.txt"],
   "BattleType.NSL Chapter 2": ["nsl/u1ch2.txt"],
   "BattleType.NSL Chapter 3": ["nsl/u1ch3.txt"],
-  "BattleType.NSL Unit 1 (Ch 1-3)": ["nsl/u1ch1.txt", "nsl/u1ch2.txt", "nsl/u1ch3.txt"]}
-'''"BattleType.APUSH Unit 1": ["apush/unit1.txt"],
-  "BattleType.APUSH Unit 2": ["apush/unit2.txt"],
-  "BattleType.APUSH Unit 3": ["apush/unit3.txt"],
-  "BattleType.APUSH Unit 4": ["apush/unit4.txt"],
-  "BattleType.APUSH Unit 5": ["apush/unit5.txt"],
-  "BattleType.APUSH Unit 6": ["apush/unit6.txt"],
-  "BattleType.APUSH Unit 7": ["apush/unit7.txt"],
-  "BattleType.APUSH Unit 8": ["apush/unit8.txt"],
-  "BattleType.APUSH All Units": ["apush/unit1.txt", "apush/unit2.txt", "apush/unit3.txt", "apush/unit4.txt", "apush/unit5.txt", "apush/unit6.txt", "apush/unit7.txt", "apush/unit8.txt"]
-}'''
+  "BattleType.NSL Unit 1 (Ch 1-3)": ["nsl/u1ch1.txt", "nsl/u1ch2.txt", "nsl/u1ch3.txt"]
+}
 
 @tree.command(
     guild=discord.Object(id=GUILD_ID),
@@ -390,392 +381,6 @@ async def questionsets(interaction: discord.Interaction):
     embed.add_field(name=(key[11:]), value="{} Questions".format(len(questions)))
   
   await interaction.response.send_message(embed=embed)
-
-
-'''
-@tree.command(
-  guild=discord.Object(id=GUILD_ID),
-  name="battle",
-  description="Start the register countdown for an Trivia Battle."
-)
-
-async def runbattle(interaction: discord.Interaction, topics: BattleType, scoring: ScoreType, numquestions: int):
-  global waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questions, timeLeft, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered, numPlayersNotBots, accuracy
-
-  if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! Battles can only be started in <#1173286856381710427>!*", ephemeral=True)
-    return
-  if waitingForPlayers or battleRunning or askingTrivia:
-    await interaction.response.send_message("*Error! There is already a battle running!*") 
-    return
-  if numquestions <= 0:
-    await interaction.response.send_message("*Error! The battle must ask at least 1 question!*")
-    return
-  
-  playerID = interaction.user.id
-  for qps in quickplay_sessions:
-    if qps.matchesPlayer(playerID) and qps.active:
-      await interaction.response.send_message("*Error! You cannot start a battle while in a quickplay session! DM the bot `!end` to leave.*") 
-      return
-
-  questions = []
-  
-  topicQuestionSet = QUESTION_SETS[str(topics)]
-  for setFile in topicQuestionSet:
-    questionsFile = open("battles/{}".format(setFile)).read().strip().split("\n")
-    questions += list(map(lambda x : x.split("]"), questionsFile))
-
-  random.shuffle(questions)
-
-  if numquestions > len(questions):
-    await interaction.response.send_message("*Error! There are not enough questions in the question set. You can ask at most `{}` questions for the topic `{}`.*".format(len(questions), str(topics)[11:]), ephemeral=True)
-    return
-  
-  registeredPlayers = ["<@" + str(interaction.user.id) + ">"]
-  waitingForPlayers = True
-  battleRunning = False
-  battleChannel = interaction.channel
-  await interaction.response.send_message(registeredPlayers[0] + " is starting a battle!")
-  await interaction.channel.send("Topic: `" + str(topics)[11:] + "`\nQuestions: `" + str(numquestions) + "`\nScoring: `" + str(scoring)[10:] + "`\nUse /battleregister to register for the battle.\nRegistration is open for 5 minutes.")
-  await interaction.channel.send(registeredPlayers[0] + ", you can skip the countdown by using /battleskip.")
-
-  timeLeft = 300
-  while timeLeft > 0:
-    await asyncio.sleep(1)
-
-    if not waitingForPlayers:
-      # has been cancelled
-      return
-    
-    timeLeft -= 1
-    if timeLeft % 600 == 0 or timeLeft in [300, 120, 60]:
-      await interaction.channel.send("Registration will close in " + str(timeLeft//60) + " minute(s).")
-  battleRunning = True
-  waitingForPlayers = False
-
-  accuracy = {}
-  for p in registeredPlayers:
-    accuracy[p] = 0
-
-  numPlayersNotBots = len(registeredPlayers)
-
-  if len(registeredPlayers) < 10:
-    await interaction.channel.send("Not enough people registered! Adding bot students...")
-    players = open("battles/allstudents.txt").read().split("\n")
-    random.shuffle(players)
-    i = 0
-    while len(registeredPlayers) < 10:
-      await interaction.channel.send("> " + players[i] + " joins the battle!")
-      registeredPlayers.append(players[i])
-      i += 1
-      await asyncio.sleep(1)
-  
-  if str(scoring) == "ScoreType.Accuracy 50% Speed 50%":
-    correctBonus = 500
-  elif str(scoring) == "ScoreType.Accuracy 75% Speed 25%":
-    correctBonus = 750
-  else:
-    correctBonus = 900
-
-  await asyncio.sleep(3)
-  await interaction.channel.send("**----------- Battle Start! -----------**")
-  players = registeredPlayers.copy()
-  msg = ", ".join(players[:-1]) + ", and " + players[-1] + " are the players in this battle!" 
-  await interaction.channel.send(msg)
-  await interaction.channel.send("**" + str(len(players)) + " players remain.**")
-  await asyncio.sleep(1)
-  await interaction.channel.send("Questions will start in about 10 seconds. Please check your DMs.")
-  for player in players:
-    if player[0] == "<":
-      await send_dm(player[2:-1], "**----- Scoring -----**\nYou will have 15 seconds each to answer {} questions.\nScoring for each question goes as follows:\n> `{}` Points for a Correct Answer\n> Up to `{}` additional points for faster answers\n> `0` Points for wrong answers/Not Finishing\nWrong answers will not penalize you if you get the correct answer later.\nThe player with the most points at the end will be the winner of the battle.\nIf I messed up on a question, type !bad to report the most recently answered question.\n\nHang tight for the battle to start!".format(numquestions,correctBonus,1000-correctBonus))
-
-
-
-  waitingForPlayers = False
-  askingTrivia = False
-  battleRunning = True
-  
-  questions = questions[:numquestions]
-  await asyncio.sleep(10)
-  
-  await interaction.channel.send("**--------- Asking Trivia... ---------**")
-
-  # Ask Trivia Questions
-  askingTrivia = True
-  battleRunning = False
-  questionID = 0
-  questionTime = 500
-
-  scores = [[] for i in range(len(questions))]
-  for questionID in range(len(questions)):
-    numPlayersAnswered = 0
-    questionTime = 500
-    inQuestion = True
-    for player in players:
-      if player[0] == "<":
-        await send_dm(player[2:-1], "--------------------\nQ{0}: ".format(questionID+1) + questions[questionID][0])
-
-    nextQEarly = False
-    for i in range(500):
-      await asyncio.sleep(0.03)
-      if (numPlayersAnswered == numPlayersNotBots):
-        nextQEarly = True
-        break
-      questionTime -= 1
-    inQuestion = False
-    for player in players:
-      if player[0] == "<":
-        endMsg = "Time's up"
-        if nextQEarly:
-          endMsg = "All non-bot players have answered"
-          await asyncio.sleep(1)
-        await send_dm(player[2:-1], "{}! The correct answer(s) were \"{}\".".format(endMsg, questions[questionID][1]))
-      else:
-        if random.randint(0, 3) == 0:
-          if "Bozo" in player:
-            pass
-          else:
-            scores[questionID].append([player, correctBonus + random.randint(0, 100)])
-
-    await asyncio.sleep(3)
-
-  # Leaderboard calculation
-  leaderboard = {}
-  for p in players:
-    leaderboard[p] = 0
-  for q in scores:
-    for q_p in q:
-      leaderboard[q_p[0]] += q_p[1]
-
-  origLeaderboard = leaderboard.copy()
-  leaderboard = list(leaderboard.items())
-  leaderboard = sorted(leaderboard, key=lambda x : x[1])
-  origScores = scores.copy()
-  scores = leaderboard.copy()
-  leaderboard = [p[0] for p in leaderboard]
-
-  for player in players:
-    if player[0] == "<":
-      await send_dm(player[2:-1], "All the questions have been asked! Go back to <#1173286856381710427> for the results!")
-
-  battleRunning = True
-  askingTrivia = False
-  await interaction.channel.send("**---------- Fighting Start! ----------**")
-  await interaction.channel.send("The fighting is about to begin!")
-  await asyncio.sleep(7)
-
-  # Run Battle
-  usedEvents = []
-  dEventStartChance = 95
-  dEventEndChance = 60
-  totalPlayers = len(players)
-  remainingPlayers = len(players)
-  toKillPos = 0
-
-  while len(players) > 1:
-    # Roll Probabilities
-    dEventChance = (dEventStartChance - dEventEndChance) * (remainingPlayers / totalPlayers) + dEventEndChance
-    dEventChance = round(dEventChance)
-    eventType = random.choices([1, 0], weights=(dEventChance, 100 - dEventChance))[0]
-    event = chooseEvent(eventType, remainingPlayers)
-    while event in usedEvents:
-      event = chooseEvent(eventType, remainingPlayers)
-    usedEvents.append(event)
-    if eventType == 0:
-      random.shuffle(players)
-      involvedPlayers = players[:event[0]]
-      await interaction.channel.send("> " + event[1].format(*([None] + involvedPlayers)))
-    else:
-      random.shuffle(players)
-      killedIdx = event[2]-1
-      killedPlayer = leaderboard[toKillPos]
-      toKillPos += 1
-      involvedPlayers = players[:event[0]]
-      while killedPlayer in involvedPlayers and involvedPlayers.index(killedPlayer) != killedIdx:
-        random.shuffle(players)
-        involvedPlayers = players[:event[0]]
-      involvedPlayers[killedIdx] = killedPlayer
-      await interaction.channel.send("> " + event[1].format(*([None] + involvedPlayers)) + " **" + killedPlayer + " died.**")
-      try:
-        players.remove(killedPlayer)
-      except:
-        print(killedPlayer, players)
-      dEvents.remove(event)
-
-      remainingPlayers = len(players)
-
-    await asyncio.sleep(3)
-
-  # Print Leaderboard
-  await interaction.channel.send("**---------- Battle Over! ----------**")
-  await asyncio.sleep(2)
-  await interaction.channel.send("Leaderboard:")
-  await asyncio.sleep(0.5)
-  leaderboard.reverse()
-  scores.reverse()
-  for i in range(len(leaderboard)):
-    if leaderboard[i][0] == "<":
-      await interaction.channel.send("> {0}. {1} ({2} points, {3}/{4} correct)".format(str(i+1) + getSuffix(i+1), leaderboard[i], scores[i][1], accuracy[leaderboard[i]], len(questions)))
-    else:
-      await interaction.channel.send("> {0}. {1} ({2} points)".format(str(i+1) + getSuffix(i+1), leaderboard[i], scores[i][1]))
-    await asyncio.sleep(0.5)
-
-  await asyncio.sleep(3)
-  await interaction.channel.send("\nThanks for playing!\nBattles can now be started again!")
-  battleRunning = False   
-
-
-
-
-
-
-
-pass
-
-
-
-
-@tree.command(
-  guild=discord.Object(id=GUILD_ID),
-  name="battlecancel",
-  description="Cancels a Trivia Battle countdown. Can only be used during the wait phase."
-)
-async def skip(interaction: discord.Interaction):
-  global waitingForPlayers, registeredPlayers, timeLeft
-  if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*", ephemeral=True)
-    return
-  elif not waitingForPlayers:
-    await interaction.response.send_message("*Error! There is no countdown to cancel!*")
-    return
-  elif "<@" + str(interaction.user.id) + ">" != registeredPlayers[0]:
-    await interaction.response.send_message("*Error! This command can only be used by the battle starter!*")
-    return
-  else:
-    if timeLeft <= 2:
-      await interaction.response.send_message("Oops, too late!")
-      return
-    
-    waitingForPlayers = False
-    battleChannel = None
-    registeredPlayers = []
-    scores = [[], [], [], [], [], [], [], [], [], [], []]
-
-    questions = []
-    questionID = 0
-    inQuestion = False
-    questionTime = 0
-    timeLeft = 0
-
-    await interaction.response.send_message("Countdown cancelled!")
-
-
-
-@tree.command(
-  guild=discord.Object(id=GUILD_ID),
-  name="battleskip",
-  description="Skip the Trivia Battle countdown."
-)
-async def skip(interaction: discord.Interaction):
-  global waitingForPlayers, registeredPlayers, timeLeft
-  if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*", ephemeral=True)
-    return
-  elif not waitingForPlayers:
-    await interaction.response.send_message("*Error! There is no countdown to skip!*")
-    return
-  elif "<@" + str(interaction.user.id) + ">" != registeredPlayers[0]:
-    await interaction.response.send_message("*Error! This command can only be used by the battle starter!*")
-    return
-  else:
-    timeLeft = 1
-    await interaction.response.send_message("Countdown set to 1 second!")
-
-
-
-
-@tree.command(
-  guild=discord.Object(id=GUILD_ID),
-  name="battleregister",
-  description="Register for a Trivia Battle."
-)
-async def register(interaction: discord.Interaction):
-  global waitingForPlayers, registeredPlayers, timeLeft
-  if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*", ephemeral=True)
-    return
-  elif not waitingForPlayers:
-    await interaction.response.send_message("*Error! There is no battle to register for!*")
-    return
-  elif "<@" + str(interaction.user.id) + ">" in registeredPlayers:
-    await interaction.response.send_message("*Error! You are already registered for this battle!*")
-    return
-  
-  playerID = interaction.user.id
-  for qps in quickplay_sessions:
-    if qps.matchesPlayer(playerID) and qps.active:
-      await interaction.response.send_message("*Error! You cannot join a battle while in a quickplay session! DM the bot `!end` to leave.*") 
-      return
-  
-  registeredPlayers.append("<@" + str(interaction.user.id) + ">")
-  await interaction.response.send_message("⚔️ You have registered for the upcoming battle!")
-
-
-
-@tree.command(
-  guild=discord.Object(id=GUILD_ID),
-  name="battleunregister",
-  description="Unregister from a Trivia Battle."
-)
-async def unregister(interaction: discord.Interaction):
-  global waitingForPlayers, registeredPlayers, timeLeft
-  if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*", ephemeral=True)
-    return
-  elif not waitingForPlayers:
-    await interaction.response.send_message("*Error! There is no battle to unregister from!*")
-    return
-  elif not "<@" + str(interaction.user.id) + ">" in registeredPlayers:
-    await interaction.response.send_message("*Error! You are not registered for this battle!*")
-    return
-  elif "<@" + str(interaction.user.id) + ">" == registeredPlayers[0]:
-    await interaction.response.send_message("Error! You cannot unregister from a battle if you are the battle leader!")
-    return
-  else:
-    registeredPlayers.remove("<@" + str(interaction.user.id) + ">")
-    await interaction.response.send_message("🏳️ You have unregistered from the upcoming battle.")
-
-
-
-@tree.command(
-  guild=discord.Object(id=GUILD_ID),
-  name="forceregister",
-  description="Force-register a user for a Trivia Battle. Admin-only."
-)
-async def forceregister(interaction: discord.Interaction, player: str):
-  global waitingForPlayers, registeredPlayers, timeLeft
-  if interaction.channel.name != "bots":
-    await interaction.response.send_message("*Error! This command can only be used in <#1173286856381710427>!*", ephemeral=True)
-    return
-  elif not waitingForPlayers:
-    await interaction.response.send_message("*Error! There is no battle to register for!*")
-    return
-  elif not is_pilliam(interaction):
-    await interaction.response.send_message("*Error! This command can only be used by <@714930955957043360>!*", ephemeral=True)
-    return
-  elif player in registeredPlayers:
-    await interaction.response.send_message("*Error! This player is already registered for this battle!*")
-    return
-
-  playerID = interaction.user.id
-  for qps in quickplay_sessions:
-    if qps.matchesPlayer(playerID) and qps.active:
-      await interaction.response.send_message("*Error! This player is in a quickplay session!*") 
-      return
-    
-  registeredPlayers.append(player)
-  await interaction.response.send_message("⚔️ " + str(player) + " has been registered for the upcoming battle!")
-'''
 
 def parseQuestionsFromTxt(txtLines):
   res_qlist = []
@@ -813,10 +418,10 @@ class QuickplaySession:
     self.questions = []
     self.questionNum = -1
     self.topicStats = {}
+    self.currentFirstTry = True
     self.stats = {
       "correct": 0,
       "incorrect": 0,
-      "firsttry": 0,
       "skipped": 0
     }
 
@@ -839,10 +444,27 @@ class QuickplaySession:
       await send_dm(self.player, cmdInfoString)
   
   async def sendStats(self):
-    pass
-
+    if self.questionNum == 0:
+      if self.embedMode:
+        await send_dm_embed(self.player, 0xffcc00, "Overall Stats", "Total Questions: 0/{} (0%)\n- No stats to show yet!".format(len(self.questions)))
+      else:
+        await send_dm(self.player, "**--- Overall Stats ---**\n" + "Total Questions: 0/{} (0%)\n- No stats to show yet!".format(len(self.questions)) + "\n**--------------------**")
+    else:
+      if self.embedMode:
+        await send_dm_embed(self.player, 0xffcc00, "Overall Stats", "Total Questions: {}/{} ({}%)\n- Correct: {} ({}%)\n- Incorrect: {} ({}%)\n- Skipped: {} ({}%)"\
+                            .format(self.questionNum, len(self.questions), round(100*self.questionNum/len(self.questions), 1),\
+                                    self.stats["correct"], round(100*self.stats["correct"]/self.questionNum, 1),\
+                                    self.stats["incorrect"], round(100*self.stats["incorrect"]/self.questionNum, 1),\
+                                    self.stats["skipped"], round(100*self.stats["skipped"]/self.questionNum, 1)))
+      else:
+        await send_dm(self.player, "**--- Overall Stats ---**\n" + "Total Questions: {}/{} ({}%)\n- Correct: {} ({}%)\n- Incorrect: {} ({}%)\n- Skipped: {} ({}%)"\
+                            .format(self.questionNum, len(self.questions), round(100*self.questionNum/len(self.questions), 1),\
+                                    self.stats["correct"], round(100*self.stats["correct"]/self.questionNum, 1),\
+                                    self.stats["incorrect"], round(100*self.stats["incorrect"]/self.questionNum, 1),\
+                                    self.stats["skipped"], round(100*self.stats["skipped"]/self.questionNum, 1)) + "\n**--------------------**")
   async def nextQuestion(self):
     self.questionNum += 1
+    self.currentFirstTry = True
     if self.questionNum >= len(self.questions):
       if self.embedMode:
         await send_dm_embed(self.player, 0xff0000, "Quickplay Session Completed!", "Congrats, you've completed the question set! This quickplay session has been ended. Feel free to start a new one anytime!")
@@ -871,14 +493,17 @@ class QuickplaySession:
       else:
         await message.add_reaction("⏭️")
         await send_dm(self.player, "Skipped! Answers: " + ", ".join(self.questions[self.questionNum][2].split(",")))
+      self.stats["skipped"] += 1
       await self.nextQuestion()
     elif content == "!end":
       self.active = False
       if self.embedMode:
         await send_dm_embed(self.player, 0xff0000, "Quickplay Session Ended!", "Feel free to start a new one anytime.")
+        await self.sendStats()
       else:
         await message.add_reaction("👋")
         await send_dm(self.player, "Quickplay Session Ended!")
+        await self.sendStats()
     elif content == "!embedtoggle":
       self.embedMode = not self.embedMode
       if self.embedMode:
@@ -909,6 +534,10 @@ class QuickplaySession:
         else:
           await message.add_reaction("✅")
           await send_dm(self.player, "Correct! All Correct Answers: " + ", ".join(self.questions[self.questionNum][2].split(",")))
+        if self.currentFirstTry:
+          self.stats["correct"] += 1
+        else:
+          self.stats["incorrect"] += 1
         await self.nextQuestion()
       else:
         await message.add_reaction("❌")
