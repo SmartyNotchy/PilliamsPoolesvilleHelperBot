@@ -129,6 +129,185 @@ Name the representative democracy that best fits the following description:
 [TOPIC] NSL 1.2
 
 Name the representative democracy that best fits the following description:
-*The US Constitution allows this at local & state levels*
+*People organize into interest groups to influence politics*
+[ANSWER] Pluralist,Pluralist Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+Name the representative democracy that best fits the following description:
+*Changing policy is slow due to competition among various interests*
+[ANSWER] Pluralist,Pluralist Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+Name the representative democracy that best fits the following description:
+*Allows many people, regardless of class, to voice interests*
+[ANSWER] Pluralist,Pluralist Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+Name the representative democracy that best fits the following description:
+*Elected representatives make decisions for the people who elect them*
+[ANSWER] Elite,Elite Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+Name the representative democracy that best fits the following description:
+*Prevents popular but unwise decisions from being rushed to policy*
+[ANSWER] Elite,Elite Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+Name the representative democracy that best fits the following description:
+*Found in the Senate & House of Representatives*
+[ANSWER] Elite,Elite Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+Name the representative democracy that best fits the following description:
+*Reflected by a strong central government*
+[ANSWER] Elite,Elite Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+Name the representative democracy that best fits the following description:
+*States are given the freedom to make local decisions*
 [ANSWER] Participatory,Participatory Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+Name the representative democracy that best fits the following description:
+*The lawmaking __process__ in Congress (by Reps & Senators)*
+[ANSWER] Pluralist,Pluralist Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+This political group supported the full ratification of the Constitution.
+[ANSWER] Federalists
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+The Federalists supported a (strong/weak) federal government.
+[ANSWER] strong
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+*Federalist No. \_\_* argued about the effectiveness of representatives and the division of national & local issues.
+[ANSWER] [EX]10
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+*Federalist No. 10* argued that:
+A: Seperate state govts. should be loosely tied together by a weak federal govt. to handle national issues.
+B: All issues should be handled by the federal govt; state governments should only enforce national decisions.
+C: Electors per state were ineffective; instead, state govts. should unanimously agree on national issues.
+D: National issues should be left to the federal govt., and state issues to state govt.
+[ANSWER] [EX]D
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+This political group opposed the full ratification of the Constitution.
+[ANSWER] Anti-Federalists,Anti-Feds
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+*Brutus No. \_\_* argued that the federal government should be weak & loosely tie together state govts.
+[ANSWER] [EX]1
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+*Brutus No. 1* argued that:
+A: Seperate state govts. should be loosely tied together by a weak federal govt. to handle national issues.
+B: All issues should be handled by the federal govt; state governments should only enforce national decisions.
+C: Electors per state were ineffective; instead, state govts. should unanimously agree on national issues.
+D: National issues should be left to the federal govt., and state issues to state govt.
+[ANSWER] [EX]A
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+Initiatives and referendums are both ways examples of this type of representative democracy today.
+[ANSWER] Participatory,Participatory Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.2
+
+Pluralist Democracy is used today through the influence of \_\_\_\_\_\_\_ \_\_\_\_\_\_.
+(Hint: ||Examples of these are the NAACP, NOW, and NRA||)
+[ANSWER] Interest Groups
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.3
+
+Under the Articles of Confederation, the (state/federal) govt. was more powerful.
+[ANSWER] State
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.3
+
+*Federalist No. \_\_* addressed the "mischiefs of faction" handled by the Constitution.
+[ANSWER] [EX]10
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.3
+
+*Federalist No. 10* addressed the danger of a few elite uniting into a \_\_\_\_\_\_ (interest group).
+[ANSWER] faction
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.3
+
+What did *Federalist No. 10* say about the Constitution in regard to factions?
+A: Factions are inevitable, and no form of government can stop them, so no need to do anything
+B: Factions will inevitably rise and fight against each other, preventing laws benefiting the common good under a large central govt.
+C: Factions would be stalled and frustrated under the Constitution, preventing them from overtaking multiple states.
+D: Factions would never form, due to constituents being able to vote them out and disband them.
+[ANSWER] [EX]C
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.3
+
+Congress's power to take any "\_\_\_\_\_\_\_\_\_ \_\_\_ \_\_\_\_\_\_" actions was suspicious to Anti-Feds.
+[ANSWER] Necessary And Proper
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.3
+
+*Brutus No. \_\_* argued that the "necessary and proper" and supremacy clauses gave the federal govt. unlimited power.
+[ANSWER] [EX]1
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.3
+
+What did *Brutus No. 1* say about "necessary and proper" and supremacy clauses?
+A: They were unnecessary & ineffective
+B: They gave the federal govt. too much power
+C: They would slow down lawmaking, making Congress ineffective in emergencies
+D: They were appropriate ways to allow Congress to pass critical legislation
+[ANSWER] [EX]B
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.3
+
+What did *Federalist No. 10* say about the Constitution in regard to factions?
+A: Factions are inevitable, and no form of government can stop them, so no need to do anything
+B: Factions will inevitably rise and fight against each other, preventing laws benefiting the common good under a large central govt.
+C: Factions would be stalled and frustrated under the Constitution, preventing them from overtaking multiple states.
+D: Factions would never form, due to constituents being able to vote them out and disband them.
+[ANSWER] [EX]B
 ----------------------------------------------------------------------------------

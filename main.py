@@ -78,14 +78,24 @@ async def printrules(interaction):
     await interaction.response.send_message("Nice try. If you actually wanted to see the rules, visit <#1106683398757564476>!", ephemeral=True)
 
 DREAM_LUCK_ACTIVATED = False
-@tree.command(name="dreamluck", description="I hired an astrophysicist, trust me rainbow berry reactions are a lot more common than you think.", guild=discord.Object(id=GUILD_ID))
+@tree.command(name="dreamluck", description="[DEBUG] Rigs the RNG.", guild=discord.Object(id=GUILD_ID))
 async def dreamluck(interaction):
   global DREAM_LUCK_ACTIVATED
   if is_pilliam(interaction):
     DREAM_LUCK_ACTIVATED = True
     await interaction.response.send_message("Rigging the RNG for the next message you send!", ephemeral=True)
   else:
-    await interaction.response.send_message("... did anything even happen?", ephemeral=True)
+    await interaction.response.send_message("Nope!", ephemeral=True)
+
+DENY_NEXT_MSG = False
+@tree.command(name="debugdeny", description="[DEBUG] Denies the next command sent, or something like that.", guild=discord.Object(id=GUILD_ID))
+async def dreamluck(interaction):
+  global DENY_NEXT_MSG
+  if is_pilliam(interaction):
+    DENY_NEXT_MSG = True
+    await interaction.response.send_message("ratio incoming", ephemeral=True)
+  else:
+    await interaction.response.send_message("Nope!", ephemeral=True)
 
 ##########################
 ## BATTLE BOT SIMULATOR ##
@@ -202,6 +212,7 @@ numPlayersAnswered = 0
 
 messagesWithoutBrainrot = 0
 BRAINROT_BLACKLIST = [
+  "kys-",
   "skibid",
   "fanu",
   "gya",
@@ -300,7 +311,7 @@ async def on_message(message):
   ## MESSAGE RNG
   ####
 
-  global DREAM_LUCK_ACTIVATED
+  global DREAM_LUCK_ACTIVATED, DENY_NEXT_MSG
   await custom_rng_reaction(message, "<:StrawberryJam:1107856772615655504>", 1001, 420)
   await custom_rng_reaction(message, "<:RainbowBerry:1107431137363644529>", 10001, 69)
   await custom_rng_reaction(message, "<:ballincat43:1256664028751593493>", 1000001, 420690)
@@ -308,6 +319,9 @@ async def on_message(message):
   await custom_rng_reaction(message, "🐺", 10, 1, ["alpha", "beta", "sigma"])
   if is_pilliam_id(message.author.id) and DREAM_LUCK_ACTIVATED:
     DREAM_LUCK_ACTIVATED = False
+  if DENY_NEXT_MSG and not is_pilliam_id(message.author.id):
+    await custom_rng_reaction(message, "❌", 1, 1)
+    DENY_NEXT_MSG = False
 
 
   ####
@@ -321,7 +335,7 @@ async def on_message(message):
   else:
     for br_keyword in BRAINROT_BLACKLIST:
       if br_keyword in message.content.lower() and all(not (x in message.content.lower()) for x in BRAINROT_WHITELIST.get(br_keyword, ["A"])):
-        if messagesWithoutBrainrot >= 50:
+        if messagesWithoutBrainrot >= 10:
           await message.add_reaction("❌")
           staff_channel = bot.get_channel(1253017097273868352)
           await staff_channel.send("https://discord.com/channels/1106646802905702560/" + str(message.channel.id) + "/" + str(message.id) + " <@" + str(message.author.id) + "> broke a no-brainrot streak of " + str(messagesWithoutBrainrot) + " messages! :skull:")
@@ -333,7 +347,6 @@ async def on_message(message):
 @tree.command(name="nobrainrot", description="View the current no-brainrot message streak.", guild=discord.Object(id=GUILD_ID))
 async def debugcounter(interaction):
   await interaction.response.send_message(str(messagesWithoutBrainrot), ephemeral=True)
-
 
 
 ####
