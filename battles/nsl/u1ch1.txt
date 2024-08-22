@@ -98,6 +98,15 @@ A \_\_\_\_\_ \_\_\_\_\_ is a collection of sovereign states gathered for nationa
 [ANSWER] Representative Republic
 ----------------------------------------------------------------------------------
 [QUESTION]
+[TOPIC] NSL 1.1
+
+Read the following `BIG IDEA`. This exact paragraph shows up enough times in the NSL textbook that it's worth drilling into your memory.
+> The U.S. Constitution establishes a system of checks and balances among branches of government and allocates power between federal and state governments. This system is based on the rule of law and the balance between majority rule and minority rights.
+
+Type "Next" to continue.
+[ANSWER] Next
+----------------------------------------------------------------------------------
+[QUESTION]
 [TOPIC] NSL 1.2
 
 Name the representative democracy that best fits the following description:
@@ -248,7 +257,7 @@ Initiatives and referendums are both ways examples of this type of representativ
 [TOPIC] NSL 1.2
 
 Pluralist Democracy is used today through the influence of \_\_\_\_\_\_\_ \_\_\_\_\_\_.
-(Hint: ||Examples of these are the NAACP, NOW, and NRA||)
+(Hint: Examples of these are the ||NAACP, NOW, and NRA||)
 [ANSWER] Interest Groups
 ----------------------------------------------------------------------------------
 [QUESTION]

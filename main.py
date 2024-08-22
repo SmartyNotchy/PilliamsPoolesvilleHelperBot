@@ -278,35 +278,6 @@ async def on_message(message):
   if message.author == bot.user:
     return
 
-  '''
-  # Trivia Scores
-  if message.guild is None and ("<@" + str(message.author.id) + ">") in registeredPlayers and askingTrivia and inQuestion and (not ("<@" + str(message.author.id) + ">") in [x[0] for x in scores[questionID]]):
-    correctAns = questions[questionID][1].lower().split("/")
-    userAns = message.content.lower()
-
-    isCorrect = False
-    for ca in correctAns:
-      if similar(ca, userAns) > 0.777:
-        isCorrect = True
-        break
-    if isCorrect:
-      numPlayersAnswered += 1
-      await message.add_reaction("✅")
-      scores[questionID].append(["<@" + str(message.author.id) + ">", correctBonus + int(questionTime*((1000 - correctBonus)/500))])
-      accuracy["<@" + str(message.author.id) + ">"] += 1
-      await message.channel.send("Answered correctly in " + str(round((500 - questionTime)*0.03, 2)) + " seconds for " + str(correctBonus + int(questionTime*((1000 - correctBonus)/500))) + " points!")
-      #print("<@" + str(message.author.id) + "> answered Q{0} in {1} seconds for {2} points.".format(questionID, round((500 - questionTime)*0.03, 2), 500 + questionTime))
-    elif "!bad" in message.content.lower():
-      await message.add_reaction("🔎")
-      await battleChannel.send("🔎 <@" + str(message.author.id) + "> requested a manual reviewal of Q{0}!".format(questionID))
-    else:
-      await message.add_reaction("❌")
-  elif message.guild is None and ("<@" + str(message.author.id) + ">") in registeredPlayers and askingTrivia:
-    if "!bad" in message.content.lower():
-      await message.add_reaction("🔎")
-      await battleChannel.send("🔎 <@" + str(message.author.id) + "> requested a manual reviewal of Q{0}!".format(questionID+1))
-  '''
-
   ####
   ## MESSAGE RNG
   ####
@@ -439,6 +410,7 @@ class QuickplaySession:
     cmdInfoString = "Question Set: `" + str(self.topic)[11:] + "`\nProgress: `" + str(max(self.questionNum, 0)) + "/" + str(len(self.questions)) + "`\n\nUse `!skip` to skip a question.\nUse `!end` to end this quickplay session.\nUse `!embedtoggle` to toggle message styles.\nUse `!stats` to view session stats. Stats are also sent on session end.\nUse `!info` to view this info text."
     if self.embedMode:
       await send_dm_embed(self.player, 0x9933ff, "Quickplay Session Info", cmdInfoString)
+      await send_dm(self.player, "*Embeds not showing? Use `!embedtoggle` to toggle embeds and `!info` to re-send this help text.*")
     else:
       await send_dm(self.player, "**--- Quickplay Session Info ---**")
       await send_dm(self.player, cmdInfoString)
@@ -684,8 +656,6 @@ async def on_ready():
 print("Attempting Logon")
 
 try:
-  pass
-  #keep_alive()
   bot.run(open("C:/Users/smart/Desktop/Python/bot.txt", "r").readline())
 except discord.HTTPException as e:
   if e.status == 429:

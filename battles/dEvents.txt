@@ -1,3 +1,5 @@
+This file was part of the old /battle system, which has since been deprecated.
+
 {1} stopped responding, and was killed by the Task Manager.|1
 {1} wonders why these events never happen in the present te-|1
 {1} started gathering too many OP items, and they were suddenly blown up by a flying blue shell.|1

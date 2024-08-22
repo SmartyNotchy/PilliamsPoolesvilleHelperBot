@@ -1,3 +1,5 @@
+This file was part of the old /battle system, which has since been deprecated.
+
 {1} attempted to kill {2}, and succeeded in destroying a target dummy bearing the likeness of {2}.
 {1} dove into a bush after hearing a rusting noise. The rustling noise was actually caused by {2}, who dove into a bush after hearing a rustling noise.
 {1} leaked Mr. Khetarpal's private Spotify playlists.

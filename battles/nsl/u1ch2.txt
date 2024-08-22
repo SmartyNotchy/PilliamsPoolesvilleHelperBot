@@ -1,0 +1,415 @@
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.4
+
+Name the quickly-drafted government plan for the US while the Revolution was underway.
+[ANSWER] Articles of Confederation/The Articles/Articles
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.4
+
+The Articles of Confederation provided for a (strong/weak) central govt.
+[ANSWER] Weak
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.4
+
+How did the Articles of Confederation apportion state representation?
+A: One vote per state
+B: Votes based on relative state population
+C: Bicameral System (both A & B)
+[ANSWER] [EX] A
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.4
+
+National legislation under the Articles of Confederation required how many states to approve?
+A: 7 (majority)
+B: 9 (supermajority)
+C: 13 (unanimous)
+[ANSWER] [EX] B
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.4
+
+Amendments to the Articles of Confederation required how many states to approve?
+A: 7 (majority)
+B: 9 (supermajority)
+C: 13 (unanimous)
+[ANSWER] [EX] C
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.4
+
+Which of the following was a weakness of Congress under the Articles of Confederation?
+A: Inability to mediate interstate disputes
+B: Couldn't levy taxes/raise funds
+C: Couldn't declare war
+D: Failed to protect individual rights (religion & speech)
+[ANSWER] [EX] B
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.4
+
+Which of the following was a weakness of Congress under the Articles of Confederation?
+A: Unreasonable requirements to pass laws/make amendments
+B: Couldn't acquire territory
+C: Inability to mediate interstate disputes
+D: Couldn't negotiate international treaties
+[ANSWER] [EX] A
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.4
+
+Which of the following was a weakness of Congress under the Articles of Confederation?
+A: Failed to protect individual rights (religion & speech)
+B: Inequal state representation in Congress
+C: Inability to mediate interstate disputes
+D: Inability to manage interstate commerce
+[ANSWER] [EX] D
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.4
+
+What major event directly highlighted the ineffectiveness of the Articles of Confederation?
+[ANSWER] Shay's Rebellion
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+To replace the Articles of Confederation, this meeting of 55 delegates was organized.
+[ANSWER] Constitutional Convention
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+The (Virginia/New Jersey) Plan argued for population-based representation of states in the national govt.
+[ANSWER] Virginia
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+The (Virginia/New Jersey) Plan argued for equal representation of states in the national govt.
+[ANSWER] New Jersey,NJ
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+The (Virginia/New Jersey) Plan argued for a supreme national govt. over the states.
+[ANSWER] Virginia
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+The (Virginia/New Jersey) Plan argued for a limited & defined national govt.
+[ANSWER] New Jersey,NJ
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+This plan established a bicameral Congress and compromised between the Virginia and NJ plans.
+[ANSWER] Connecticut,Connecticut Compromise,Great Compromise
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Under the Great Compromise, a two-house (aka \_\_\_\_\_\_\_\_) Congress was established.
+[ANSWER] bicameral
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+What two things did the Constitution say about slavery?
+(*Answer with both letters: i.e. AB*)
+A: Slaves didn't contribute to population (for representation)
+B: Slaves were fully counted to population
+C: Slaves counted as 3/5ths of a person for population
+D: Immediately ended the international slave trade
+E: International slave trade couldn't be ended for at least 20 years
+F: International slave trade could only be ended with a 2/3 supermajority in Congress
+[ANSWER] [EX] CE
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+The Electoral College for electing the president is an example of this representative democracy in the Constitution.
+[ANSWER] Elite,Elite Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Article \_ of the Constitution goes over the basic setup of Congress.
+[ANSWER] [EX] I,[EX] 1,One
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Article \_ of the Constitution goes over the basic setup of the Presidency.
+[ANSWER] [EX] II,[EX] 2,Two
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Article \_ of the Constitution goes over the judiciary branch & its interactions with the other branches.
+[ANSWER] [EX] III,[EX] 3,Three
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Article \_ of the Constitution goes over interstate relations ("faith and credit" clause).
+[ANSWER] [EX] IV,[EX] 4,Four
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Article \_ of the Constitution goes over the Amendment process.
+[ANSWER] [EX] V,[EX] 5,Five
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Article \_ of the Constitution establishes national supremacy (the "supremacy clause").
+[ANSWER] [EX] VI,[EX] 6,Six
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Article \_ of the Constitution outlines the ratification process of the Constitution itself.
+[ANSWER] [EX] VII,[EX] 7,Seven
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Under Article V, how much support is needed for a Constitutional amendment to pass?
+A: 1/2 Congress, 1/2 States
+B: 1/2 Congress, 2/3 States
+C: 1/2 Congress, 3/4 States
+D: 2/3 Congress, 1/2 States
+E: 2/3 Congress, 2/3 States
+F: 2/3 Congress, 3/4 States
+[ANSWER] [EX] F
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Article \_ of the Constitution outlines the ratification process of the Constitution itself.
+[ANSWER] [EX] VII,[EX] 7,Seven
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+What was one argument that some Federalists (notably James Madison) used to push against a Bill of Rights?
+A: Listing all protected rights might lead to others being overlooked & potentially taken away
+B: They would add unnecessary legal red tape, weakening the judicial branch & making enforcement difficult
+C: All rights were already addressed & protected in Article II, so a Bill of Rights would be redundant
+D: It would hurt the ratification chances of the Constitution
+[ANSWER] [EX] A
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Amendments 1-10 of the Constitution are commonly referred to as the \_\_\_\_ \_ \_\_\_\_\_.
+[ANSWER] [EX] Bill of Rights
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Amendment \_ of the Constitution protects the freedom of religion, speech, press, assembly, and petition.
+[ANSWER] [EX] I,[EX] 1,One
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Amendment \_ of the Constitution protects the right to bear arms.
+[ANSWER] [EX] II,[EX] 2,Two
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Amendment \_ of the Constitution restricts forced quartering of troops.
+[ANSWER] [EX] III,[EX] 3,Three
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Amendment \_ of the Constitution protects against unreasonable searches & seizures.
+[ANSWER] [EX] IV,[EX] 4,Four
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Amendment \_ of the Constitution states the rights of individuals in legal proceedings.
+[ANSWER] [EX] V,[EX] 5,Five
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Amendment \_ of the Constitution states the rights of individuals in criminal prosecutions.
+[ANSWER] [EX] VI,[EX] 6,Six
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Amendment \_ of the Constitution outlines rights regarding lawsuits & juries.
+[ANSWER] [EX] VII,[EX] 7,Seven
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Amendment \_ of the Constitution protects against cruel & unusual punishments.
+[ANSWER] [EX] VIII,[EX] 8,Eight
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Amendment \_ of the Constitution explicitly states that listing rights in the Constitution doesn't deny others.
+[ANSWER] [EX] IX,[EX] 9,Nine
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.5
+
+Amendment \_ of the Constitution covers delegated & reserved powers (concerning the federal & state govt.).
+[ANSWER] [EX] X,[EX] 10,Ten
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+Both houses of Congress have \_\_\_\_\_\_\_\_\_, groups of 10-40 members that oversee certain topics of law or policy.
+[ANSWER] Committees
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+Stakeholders exert influence on Congress via special \_\_\_\_\_\_\_ \_\_\_\_\_.
+[ANSWER] Interest Groups
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+(T/F) Citizens can help influence lawmaking and governmental decisions in all three branches of federal govt.
+[ANSWER] [EX] T,[EX] True
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+Citizens can file complaints through \_\_\_\_\_\_\_ to assure enforcement/fairness in law, and can even report some federal crimes to these.
+(Hint: Examples of these are the ||Equal Employment Opportunity Commission, the FBI, and the Drug Enforcement Administration||)
+[ANSWER] Agencies
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+\_\_\_\_\_\_\_\_\_ \_\_\_\_\_\_ is used by the judicial branch as its main way to check the legislative & executive branches.
+(Hint: ||Marbury v. Madison||)
+[ANSWER] Judicial Review
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+Which of the following is **NOT** a way for citizens to interact with the judicial branch?
+A: Challenging unfair government action
+B: Appealing wrongful convictions
+C: Questioning the constitutionality of certain policies
+D: Initiating impeachment trials for members in Congress
+[ANSWER] [EX] D
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+(T/F) A Senate Supermajority (2/3) is enough to override a House decision, allowing for a law to pass.
+[ANSWER] [EX] F,[EX] False
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+(T/F) Only the legislative branch can establish law & policy.
+[ANSWER] [EX] F,[EX] False
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+This branch of national govt. makes public will become public policy.
+[ANSWER] legislative
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+This branch of national govt. enforces & carries out Congress's policies.
+[ANSWER] executive
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+This branch of national govt. hears disputes & interprets laws
+[ANSWER] judicial
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+*Federalist No. \_\_* argues for separation of powers as a guard against tyranny.
+[ANSWER] [EX] 51
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+*Federalist No. 51* goes over which of the following Constitutional aspects?
+A: Handling the "Mischief of Factions"
+B: Separation of Powers
+C: Drawbacks of a Bill of Rights
+D: Federalism
+[ANSWER] [EX] B
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+Each branch of national govt. can limit the others with \_\_\_\_\_ \_\_ \_\_\_\_\_\_\_\_\_.
+[ANSWER] Checks and Balances
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+The President can reject laws from Congress with a \_\_\_\_.
+[ANSWER] Veto
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+When the President refuses to sign laws at the end of a legislative session, it is called a \_\_\_\_\_\_ \_\_\_\_.
+[ANSWER] Pocket Veto
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+How can Congress override vetos?
+A: 1/2 Senate
+B: 2/3 Senate
+C: 1/2 House, 1/2 Senate
+D: 2/3 House, 2/3 Senate
+[ANSWER] [EX] D
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+The Senate has the power of "\_\_\_\_\_\_ \_\_ \_\_\_\_\_\_", allowing it to question and approve/reject appointees nominated by the President.
+[ANSWER] Advice and Consent
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+Which part of national govt. has the power of impeachment?
+A: President
+B: House of Reps
+C: Senate
+D: Congress (Both Houses)
+E: Supreme Court 
+[ANSWER] [EX] B
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.6
+
+Read the following `BIG IDEA`. This exact paragraph shows up enough times in the NSL textbook that it's worth drilling into your memory.
+> The U.S. Constitution establishes a system of checks and balances among branches of government and allocates power between federal and state governments. This system is based on the rule of law and the balance between majority rule and minority rights.
+
+Type "Next" to continue.
+[ANSWER] Next
+----------------------------------------------------------------------------------
