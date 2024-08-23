@@ -150,3 +150,167 @@ Compared to grants, \_\_\_\_\_\_ are passed by Congress to force states to compl
 Under Reagan, \_\_\_\_\_\_\_\_\_ (the return of power to states) occured.
 [ANSWER] Devolution
 ----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+Article 1 Section \_ covers the enumerated powers of Congress.
+[ANSWER] [EX] 8,[EX] VIII,Eight
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+Article 1 Section 8 covers the \_\_\_\_\_\_\_\_\_ \_\_\_\_\_ of Congress.
+[ANSWER] Enumerated Powers
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+The \_\_\_\_\_\_\_\_\_ \_\_\_\_\_\_ allows Congress to regulate all interstate & international commerce.
+[ANSWER] Commerce Clause
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+This clause gives Congress implied powers that are necessary to execute its explicitly given powers.
+[ANSWER] Elastic,Elastic Clause,Necessary and Proper,"Necessary and Proper" Clause
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+The Elastic Clause gives Congress \_\_\_\_\_\_\_ powers that are necessary to execute its explicitly given powers.
+[ANSWER] Implied
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+Article 1 Section \_ covers the things that Congress CANNOT do.
+[ANSWER] [EX] 9,[EX] IX,Nine
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+Article 1 Section \_ covers the things that state govts. CANNOT do.
+[ANSWER] [EX] 10,[EX] X,Ten
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+Amendment \_ prevents states from denying citizens equal protection of the laws.
+[ANSWER] [EX] XIV,[EX] 14,Fourteen
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+This court case gave the federal govt. implied powers under the elastic clause.
+[ANSWER] McCulloch v. Maryland
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+*McCulloch v. Maryland* gave the federal govt. implied powers under the \_\_\_\_\_\_\_\_ \_\_\_\_\_\_.
+[ANSWER] Elastic Clause,"Necessary and Proper" Clause
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+Under *McCulloch v. Maryland*, was Congress allowed to create a bank, and why?
+A: Yes - it was an explicit power under Article I Section 8
+B: Yes - the power was implied under the elastic clause
+C: No - the power to create a bank was never explicitly mentioned in the Constitution
+D: No - the power to create a bank was implied to be reserved to the states
+[ANSWER] [EX] B
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+Under *McCulloch v. Maryland*, were states allowed to tax federal institutions, and why?
+A: Yes - federal institutions are still under state jurisdiction
+B: Yes - states have the reserved power to tax any body or organization
+C: No - states do not have the power to tax any bodies, let alone federal institutions
+D: No - taxing would destroy said institutions, which were under federal jurisdiction
+[ANSWER] [EX] D
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+Which of the following was NOT broadened under *McCulloch v. Maryland*?
+A: Commerce Clause
+B: Implied Powers
+C: Supremacy Clause
+D: Elastic Clause
+[ANSWER] [EX] A
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+Under *McCulloch v. Maryland*, were states allowed to tax federal institutions, and why?
+A: Yes - federal institutions are still under state jurisdiction
+B: Yes - states have the reserved power to tax any body or organization
+C: No - states do not have the power to tax any bodies, let alone federal institutions
+D: No - taxing would destroy said institutions, which were under federal jurisdiction
+[ANSWER] [EX] D
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+This court case built upon *McCulloch v. Maryland* by extending the commerce clause.
+[ANSWER] Gibbons v. Ogden
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+*Gibbons v. Ogden* built upon *McCulloch v. Maryland* by extending the \_\_\_\_\_\_\_\_ \_\_\_\_\_\_.
+[ANSWER] Commerce Clause
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+Under \_\_\_\_ \_\_\_\_\_\_\_\_\_\_\_, both the federal & state govts. are equally supreme in their own spheres.
+[ANSWER] Dual Federalism
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+\_\_\_\_\_\_\_\_\_ \_\_\_\_\_\_\_\_\_\_\_ only lets Congress regulate if a national uniform rule is required.
+[ANSWER] Selective Exclusiveness
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+This court case somewhat countered the precedent *Gibbons v. Ogden*.
+[ANSWER] US v. Lopez
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+*US v. Lopez* somewhat countered the precedent set by this court case.
+[ANSWER] Gibbons v. Ogden
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.8
+
+Both *US v. Lopez* and *Gibbons v. Ogden* concerned the usage of this clause, although in opposite ways.
+[ANSWER] Commerce,Commerce Clause
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.9
+
+Despite Trump withdrawing from the Paris Agreement (an international environmental agreement), many states decided to follow the guidelines anyways. This is an example of:
+[ANSWER] Checks and Balances,Tenth Amendment
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 1.9
+
+Some states start to legalize medical marijuana by using ballot initiatives. This is an example of:
+(Hint: ||A type of representative democracy||)
+[ANSWER] Participatory,Participatory Democracy
+----------------------------------------------------------------------------------\[QUESTION]
+[TOPIC] NSL 1.9
+
+If marijuana is illegal nationally but legal in a state, which law wins and why?
+A: State - Marijuana is a topic reserved to the states
+B: State - State law trumps federal law in a conflict
+C: Federal - Marijuana is a topic reserved to the national govt.
+D: Federal - Federal law trumps state law in a conflict
+[ANSWER] [EX] D
+----------------------------------------------------------------------------------
