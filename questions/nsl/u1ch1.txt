@@ -5,7 +5,7 @@
 What message did Hobbes & *The Leviathan* send?
 A: Everyone gives up rights so a leader can run for the good of society
 B: No one can be subjected to political rule without consent
-C: Power rests with the people, governtment officials carry out laws
+C: Power rests with the people, government officials carry out laws
 D: The government has defined & limited powers (checks & balances, branches)
 [ANSWER] [EX] A
 ----------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ D: Montesquieu (*The Spirit of the Laws*)
 What message did John Locke and Natural Law send?
 A: Everyone gives up rights so a leader can run for the good of society
 B: No one can be subjected to political rule without consent
-C: Power rests with the people, governtment officials carry out laws
+C: Power rests with the people, government officials carry out laws
 D: The government has defined & limited powers (checks & balances, branches)
 [ANSWER] [EX] B
 ----------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ D: Montesquieu (*The Spirit of the Laws*)
 What message did Rosseau & *The Social Contract* send?
 A: Everyone gives up rights so a leader can run for the good of society
 B: No one can be subjected to political rule without consent
-C: Power rests with the people, governtment officials carry out laws
+C: Power rests with the people, government officials carry out laws
 D: The government has defined & limited powers (checks & balances, branches)
 [ANSWER] [EX] C
 ----------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ D: Montesquieu (*The Spirit of the Laws*)
 What message did Montesquieu and *The Spirit of the Laws* send?
 A: Everyone gives up rights so a leader can run for the good of society
 B: No one can be subjected to political rule without consent
-C: Power rests with the people, governtment officials carry out laws
+C: Power rests with the people, government officials carry out laws
 D: The government has defined & limited powers (checks & balances, branches)
 [ANSWER] [EX] D
 ----------------------------------------------------------------------------------

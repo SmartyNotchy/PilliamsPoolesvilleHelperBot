@@ -97,60 +97,9 @@ async def dreamluck(interaction):
   else:
     await interaction.response.send_message("Nope!", ephemeral=True)
 
-##########################
-## BATTLE BOT SIMULATOR ##
-##########################
-
-####
-## Reading Events
-####
-
-nEvents = [] # Neutral Events
-nEventsFile = open("battles/nEvents.txt")
-while True:
-    event = nEventsFile.readline().strip()
-    if event == "":
-        break
-    else:
-        mentions = re.findall("{\d}", event)
-        mentions = (int(x[1]) for x in mentions)
-        nEvents.append((max(mentions), event))
-
-dEvents = [] # Death Events
-dEventsFile = open("battles/dEvents.txt")
-while True:
-    event = dEventsFile.readline().strip()
-    if event == "":
-        break
-    else:
-        event = event.split("|")
-        if len(event) != 2:
-            print("Error reading death events")
-            print("Debug:", event)
-            exit(1)
-        else:
-            killed = int(event[1])
-            event = event[0]
-            mentions = re.findall("{\d}", event)
-            mentions = (int(x[1]) for x in mentions)
-            dEvents.append((max(mentions), event, killed))
-####
-## Helper Funcs
-####
-
-def chooseEvent(eventType, remainingPlayers):
-  global nEvents, dEvents
-  if eventType == 0:
-      event = random.choice(nEvents)
-      while remainingPlayers < event[0]:
-          event = random.choice(nEvents)
-      return event
-  else:
-      event = random.choice(dEvents)
-      while remainingPlayers < event[0]:
-          event = random.choice(dEvents)
-      return event
-
+######################
+## HELPER FUNCTIONS ##
+######################
 
 async def send_dm(id, msg):
   try:
@@ -159,23 +108,10 @@ async def send_dm(id, msg):
   except:
     pass
 
-
 async def send_dm_embed(id, color, title, body):
   user = await bot.fetch_user(id)
   await user.send(embed=discord.Embed(title=title, description=body, color=color))
   
-def getSuffix(i):
-  if i % 100 >= 10 and i % 100 <= 19:
-    return "th"
-  if i % 10 == 1:
-    return "st"
-  if i % 10 == 2:
-    return "nd"
-  if i % 10 == 3:
-    return "rd"
-  return "th"
-
-
 async def custom_rng_reaction(message, reaction, chance, numtoroll, prereqs=[""]):
   global DREAM_LUCK_ACTIVATED
   for prq in prereqs:
@@ -187,28 +123,9 @@ async def custom_rng_reaction(message, reaction, chance, numtoroll, prereqs=[""]
           await staff_channel.send("https://discord.com/channels/1106646802905702560/" + str(message.channel.id) + "/" + str(message.id) + " Rolled a " + reaction + " reaction (1/" + str(chance) + ")!")
       return
 
-####
-## Bot Setup
-####
-
-waitingForPlayers = False
-askingTrivia = False
-battleRunning = False
-
-battleChannel = None
-registeredPlayers = []
-scores = [[], [], [], [], [], [], [], [], [], [], []]
-accuracy = {}
-
-questions = []
-questionID = 0
-inQuestion = False
-questionTime = 0
-correctBonus = 0
-timeLeft = 0
-
-numPlayersNotBots = 0
-numPlayersAnswered = 0
+###############
+## BOT SETUP ##
+###############
 
 messagesWithoutBrainrot = 0
 BRAINROT_BLACKLIST = [
@@ -273,7 +190,7 @@ BRAINROT_WHITELIST = {
 @bot.event
 async def on_message(message):
   global messagesWithoutBrainrot
-  global quickplay_sessions, waitingForPlayers, askingTrivia, battleRunning, battleChannel, registeredPlayers, scores, questionID, inQuestion, questionTime, correctBonus, numPlayersAnswered, accuracy
+  global quickplay_sessions
 
   if message.author == bot.user:
     return
@@ -320,18 +237,17 @@ async def debugcounter(interaction):
   await interaction.response.send_message(str(messagesWithoutBrainrot), ephemeral=True)
 
 
-####
-## BATTLE SLASH COMMANDS
-####
+##############################
+## QUICKPLAY SLASH COMMANDS ##
+##############################
 
-BattleType = Enum(value="BattleType", names=["NSL Chapter 1", "NSL Chapter 2", "NSL Chapter 3", "NSL Unit 1 (Ch 1-3)"])
-ScoreType = Enum(value="ScoreType", names=["Accuracy 50% Speed 50%", "Accuracy 75% Speed 25%", "Accuracy 90% Speed 10%"])
+QuestionTopics = Enum(value="QuestionTopics", names=["NSL Chapter 1", "NSL Chapter 2", "NSL Chapter 3", "NSL Unit 1 (Ch 1-3)"])
 
 QUESTION_SETS = {
-  "BattleType.NSL Chapter 1": ["nsl/u1ch1.txt"],
-  "BattleType.NSL Chapter 2": ["nsl/u1ch2.txt"],
-  "BattleType.NSL Chapter 3": ["nsl/u1ch3.txt"],
-  "BattleType.NSL Unit 1 (Ch 1-3)": ["nsl/u1ch1.txt", "nsl/u1ch2.txt", "nsl/u1ch3.txt"]
+  "QuestionTopics.NSL Chapter 1": ["nsl/u1ch1.txt"],
+  "QuestionTopics.NSL Chapter 2": ["nsl/u1ch2.txt"],
+  "QuestionTopics.NSL Chapter 3": ["nsl/u1ch3.txt"],
+  "QuestionTopics.NSL Unit 1 (Ch 1-3)": ["nsl/u1ch1.txt", "nsl/u1ch2.txt", "nsl/u1ch3.txt"]
 }
 
 @tree.command(
@@ -347,9 +263,9 @@ async def questionsets(interaction: discord.Interaction):
     questions = []
     for setFile in value:
       #print(setFile)
-      questionsFile = open("battles/{}".format(setFile)).read().strip().split("\n")
+      questionsFile = open("questions/{}".format(setFile)).read().strip().split("\n")
       questions += parseQuestionsFromTxt(questionsFile)
-    embed.add_field(name=(key[11:]), value="{} Questions".format(len(questions)))
+    embed.add_field(name=(key[15:]), value="{} Questions".format(len(questions)))
   
   await interaction.response.send_message(embed=embed)
 
@@ -398,7 +314,7 @@ class QuickplaySession:
 
     topicQuestionSet = QUESTION_SETS[str(topic)]
     for setFile in topicQuestionSet:
-      questionsFile = open("battles/{}".format(setFile)).read().strip().split("\n")
+      questionsFile = open("questions/{}".format(setFile)).read().strip().split("\n")
       self.questions += parseQuestionsFromTxt(questionsFile)
 
     random.shuffle(self.questions)
@@ -407,7 +323,7 @@ class QuickplaySession:
     await self.nextQuestion()
 
   async def sendInfo(self):
-    cmdInfoString = "Question Set: `" + str(self.topic)[11:] + "`\nProgress: `" + str(max(self.questionNum, 0)) + "/" + str(len(self.questions)) + "`\n\nUse `!skip` to skip a question.\nUse `!end` to end this quickplay session.\nUse `!embedtoggle` to toggle message styles.\nUse `!stats` to view session stats. Stats are also sent on session end.\nUse `!info` to view this info text."
+    cmdInfoString = "Question Set: `" + str(self.topic)[15:] + "`\nProgress: `" + str(max(self.questionNum, 0)) + "/" + str(len(self.questions)) + "`\n\nUse `!skip` to skip a question.\nUse `!end` to end this quickplay session.\nUse `!embedtoggle` to toggle message styles.\nUse `!stats` to view session stats. Stats are also sent on session end.\nUse `!info` to view this info text."
     if self.embedMode:
       await send_dm_embed(self.player, 0x9933ff, "Quickplay Session Info", cmdInfoString)
       await send_dm(self.player, "*Embeds not showing? Use `!embedtoggle` to toggle embeds and `!info` to re-send this help text.*")
@@ -512,6 +428,7 @@ class QuickplaySession:
           self.stats["incorrect"] += 1
         await self.nextQuestion()
       else:
+        self.currentFirstTry = False
         await message.add_reaction("❌")
 
 
@@ -520,15 +437,12 @@ class QuickplaySession:
   name="quickplay",
   description="Set up a quickplay trivia session."
 )
-async def quickplay(interaction: discord.Interaction, topics: BattleType):
-  global quickplay_sessions, registeredPlayers
+async def quickplay(interaction: discord.Interaction, topics: QuestionTopics):
+  global quickplay_sessions
 
   #if interaction.channel.name != "bots":
   #  await interaction.response.send_message("*Error! Quickplays can only be started in <#1173286856381710427>!*", ephemeral=True)
   #  return
-  if "<@" + str(interaction.user.id) + ">" in registeredPlayers:
-    await interaction.response.send_message("*Error! You cannot start a quickplay while registered for a battle!*", ephemeral=True) 
-    return
 
   playerID = interaction.user.id
   for qps in quickplay_sessions:
@@ -536,7 +450,7 @@ async def quickplay(interaction: discord.Interaction, topics: BattleType):
       await interaction.response.send_message("*Error! You are already in a quickplay session! DM the bot `!end` to leave!*", ephemeral=True) 
       return
   
-  await interaction.response.send_message("Creating quickplay session for `" + str(topics)[11:] + "`!", ephemeral=True)
+  await interaction.response.send_message("Creating quickplay session for `" + str(topics)[15:] + "`!", ephemeral=True)
   new_qps = QuickplaySession()
   await new_qps.setup(playerID, topics)
   quickplay_sessions.append(new_qps)
@@ -566,11 +480,11 @@ async def update_qp_sessions():
 @tree.command(
   guild=discord.Object(id=GUILD_ID),
   name="testdm",
-  description="Test if your Discord Account is setup properly to join trivia battles"
+  description="Test if your Discord Account is properly setup to use quickplay sessions"
 )
 async def register(interaction: discord.Interaction):
   await interaction.response.send_message("If you can see this message and just received a DM, everything's good to go! If you did not receive a DM, refer to https://support.discord.com/hc/en-us/articles/217916488-Blocking-Privacy-Settings.", ephemeral=True)
-  await send_dm(interaction.user.id, "If you're reading this, everything's all set! Happy trivia battling!")
+  await send_dm(interaction.user.id, "If you're reading this, everything's all set!")
 
 pass
 ###################################
