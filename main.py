@@ -410,17 +410,17 @@ class QuickplaySession:
         await message.add_reaction("🚧")
         await send_dm(self.player, "Invalid Command! Use `!info` to view a list of commands.")
     else:
-      correctAns = self.questions[self.questionNum][2].split(",")
+      correctAns = self.questions[self.questionNum][2].split(",").lower()
       isCorrect = False
       for ca in correctAns:
         if ("[EX] " in ca and content == ca[5:].strip().lower()) or (not ("[EX] " in ca) and similar(ca, content) > 0.777):
           isCorrect = True
           break
       if isCorrect:
+        await message.add_reaction("✅")
         if self.embedMode:
           await send_dm_embed(self.player, 0x33cc33, "Correct!", "All Accepted Answers:\n" + "\n".join("- " + x for x in self.questions[self.questionNum][2].split(",")))
         else:
-          await message.add_reaction("✅")
           await send_dm(self.player, "Correct! All Correct Answers: " + ", ".join(self.questions[self.questionNum][2].split(",")))
         if self.currentFirstTry:
           self.stats["correct"] += 1
