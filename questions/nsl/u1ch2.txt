@@ -27,7 +27,7 @@ National legislation under the Articles of Confederation required how many state
 A: 7 (majority)
 B: 9 (supermajority)
 C: 13 (unanimous)
-[ANSWER] [EX] B
+[ANSWER] [EX] B,[EX] 9
 ----------------------------------------------------------------------------------
 [QUESTION]
 [TOPIC] NSL 1.4
@@ -36,7 +36,7 @@ Amendments to the Articles of Confederation required how many states to approve?
 A: 7 (majority)
 B: 9 (supermajority)
 C: 13 (unanimous)
-[ANSWER] [EX] C
+[ANSWER] [EX] C,[EX] 13
 ----------------------------------------------------------------------------------
 [QUESTION]
 [TOPIC] NSL 1.4
@@ -403,13 +403,4 @@ C: Senate
 D: Congress (Both Houses)
 E: Supreme Court 
 [ANSWER] [EX] B
-----------------------------------------------------------------------------------
-[QUESTION]
-[TOPIC] NSL 1.6
-
-Read the following `BIG IDEA`. This exact paragraph shows up enough times in the NSL textbook that it's worth drilling into your memory.
-> The U.S. Constitution establishes a system of checks and balances among branches of government and allocates power between federal and state governments. This system is based on the rule of law and the balance between majority rule and minority rights.
-
-Type "Next" to continue.
-[ANSWER] Next
 ----------------------------------------------------------------------------------
