@@ -55,14 +55,14 @@ async def printrules(interaction):
     embed = discord.Embed(title="Server Rules", description="This server has stricter rules & management than most other school servers; hence the name \"Civilized PHS SMCS Server.\" If you don't like this, then join another PHS server and accept the responsibility; don't complain about it here.", color=0x3366ff)
     embed.add_field(name="Rule 1 - PG-13", value="Keep things PG-13 (no NSFW). Swears are fine, slurs are not.", inline=False)
     embed.add_field(name="Rule 2 - No Hate Speech", value="No racism, hate, bias, discrimination, sexism, homophobia, etc.", inline=False)
-    embed.add_field(name="Rule 3 - No Serious Threats", value="Anything that could be perceived as a legitimate threat is banned. If it's obviously in jest AND not too serious, it's fine. \"KYS\" = AutoMod 1 hour mute.",inline=False)
-    embed.add_field(name="Rule 4 - Plagiarism Bad", value="Don't copy-pasting entire assignments.",inline=False)
+    embed.add_field(name="Rule 3 - No Serious Threats", value="Anything that could be perceived as a legitimate threat is banned. If it's obviously in jest AND not too serious, it's fine - but this is up to admin discretion.",inline=False)
+    embed.add_field(name="Rule 4 - Plagiarism Bad", value="Don't promote copy-pasting entire assignments.",inline=False)
     embed.add_field(name="Rule 5 - No Spamming", value="Don't spam pings or messages, it's annoying.",inline=False)
-    embed.add_field(name="Rule 6 - No Drama", value="This isn't Twitter. Keep this a nice and friendly community. DMs exist for a reason.",inline=False)
+    embed.add_field(name="Rule 6 - No Drama", value="No excessive drama-mongering. **Period.** Keep this a nice and friendly community. If a genuine problem arises, may I suggest talking with **an actual school counselor** instead of a semi-public discord server.",inline=False)
     embed.add_field(name="TL;DR", value="Assume this server will inevitably get leaked, and don't send anything stupid.",inline=False)
     await ctx.send(embed=embed)
 
-    embed = discord.Embed(title="Legal Yap", color=0x009933, description="By sending messages in this server, you acknowledge that the content of said messages are logged (even if deleted/edited) and may be shown to applicable staff members in extreme cases where the safety and/or wellbeing of students and/or staff is threatened. (TL;DR, don't make any threats or racial cyberbullying or stuff or it WILL be reported to applicable staff members)")
+    embed = discord.Embed(title="Legal Yap", color=0x009933, description="This server has audit logs that track, among other things, **all** message edits and deletions. Additionally, said logs will never be deleted no matter how much you beg me. I (and other admins) reserve the right to send conversation logs to appropriate staff members in cases where the health, safety, and/or well-being of anybody is threatened.")
     await ctx.send(embed=embed)
 
     embed = discord.Embed(title="Punishments", color=0xFF0000, description="Literally whatever fits the situtation. You could call this admin abuse, but you really shouldn't be causing enough trouble to necessitate this in the first place.")
@@ -247,7 +247,8 @@ QUESTION_SETS = {
   "QuestionTopics.NSL Chapter 1": ["nsl/u1ch1.txt"],
   "QuestionTopics.NSL Chapter 2": ["nsl/u1ch2.txt"],
   "QuestionTopics.NSL Chapter 3": ["nsl/u1ch3.txt"],
-  "QuestionTopics.NSL Unit 1 (Ch 1-3)": ["nsl/u1ch1.txt", "nsl/u1ch2.txt", "nsl/u1ch3.txt"]
+  "QuestionTopics.NSL Unit 1 (Ch 1-3)": ["nsl/u1ch1.txt", "nsl/u1ch2.txt", "nsl/u1ch3.txt"],
+  "QuestionTopics.NSL Chapter 4": ["nsl/u2ch1.txt"],
 }
 
 @tree.command(
@@ -339,16 +340,16 @@ class QuickplaySession:
         await send_dm(self.player, "**--- Overall Stats ---**\n" + "Total Questions: 0/{} (0%)\n- No stats to show yet!".format(len(self.questions)) + "\n**--------------------**")
     else:
       if self.embedMode:
-        await send_dm_embed(self.player, 0xffcc00, "Overall Stats", "Total Questions: {}/{} ({}%)\n- Correct: {} ({}%)\n- Incorrect: {} ({}%)\n- Skipped: {} ({}%)"\
-                            .format(self.questionNum, len(self.questions), round(100*self.questionNum/len(self.questions), 1),\
-                                    self.stats["correct"], round(100*self.stats["correct"]/self.questionNum, 1),\
-                                    self.stats["incorrect"], round(100*self.stats["incorrect"]/self.questionNum, 1),\
+        await send_dm_embed(self.player, 0xffcc00, "Overall Stats", "Total Questions: {}/{} ({}%)\n- Correct: {} ({}%)\n- Incorrect: {} ({}%)\n- Skipped: {} ({}%)"
+                            .format(self.questionNum, len(self.questions), round(100*self.questionNum/len(self.questions), 1),
+                                    self.stats["correct"], round(100*self.stats["correct"]/self.questionNum, 1),
+                                    self.stats["incorrect"], round(100*self.stats["incorrect"]/self.questionNum, 1),
                                     self.stats["skipped"], round(100*self.stats["skipped"]/self.questionNum, 1)))
       else:
-        await send_dm(self.player, "**--- Overall Stats ---**\n" + "Total Questions: {}/{} ({}%)\n- Correct: {} ({}%)\n- Incorrect: {} ({}%)\n- Skipped: {} ({}%)"\
-                            .format(self.questionNum, len(self.questions), round(100*self.questionNum/len(self.questions), 1),\
-                                    self.stats["correct"], round(100*self.stats["correct"]/self.questionNum, 1),\
-                                    self.stats["incorrect"], round(100*self.stats["incorrect"]/self.questionNum, 1),\
+        await send_dm(self.player, "**--- Overall Stats ---**\n" + "Total Questions: {}/{} ({}%)\n- Correct: {} ({}%)\n- Incorrect: {} ({}%)\n- Skipped: {} ({}%)"
+                            .format(self.questionNum, len(self.questions), round(100*self.questionNum/len(self.questions), 1),
+                                    self.stats["correct"], round(100*self.stats["correct"]/self.questionNum, 1),
+                                    self.stats["incorrect"], round(100*self.stats["incorrect"]/self.questionNum, 1),
                                     self.stats["skipped"], round(100*self.stats["skipped"]/self.questionNum, 1)) + "\n**--------------------**")
   async def nextQuestion(self):
     self.questionNum += 1

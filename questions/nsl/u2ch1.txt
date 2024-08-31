@@ -1,0 +1,111 @@
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+Congress is made up of a \_\_\_\_\_\_\_\_\_ (two-house) legislature.
+[ANSWER] Bicameral
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+The House of Representatives uses this model to determine state representation:
+A: Population-based
+B: Size-based (land mass)
+C: Economy-based
+D: Equal
+[ANSWER] [EX] A
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+The Senate uses this model to determine state representation:
+A: Population-based
+B: Size-based (land mass)
+C: Economy-based
+D: Equal
+[ANSWER] [EX] D
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+Before the 17th Amendment, Senators were determined by this form of representative democracy.
+[ANSWER] Elite,Elite Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+Currently (after the 17th Amendment), Senators are determined form of representative democracy.
+[ANSWER] Participatory,Participatory Democracy
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+Does the following relate to the A: House of Representatives or B: Senate?
+(Answer either A or B)
+
+- Originate revenue bills
+[ANSWER] [EX] A
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+Does the following relate to the A: House of Representatives or B: Senate?
+(Answer either A or B)
+
+- Initiates impeachment
+[ANSWER] [EX] A
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+Does the following relate to the A: House of Representatives or B: Senate?
+(Answer either A or B)
+
+- Agenda controlled by the Majority Party
+[ANSWER] [EX] A
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+Does the following relate to the A: House of Representatives or B: Senate?
+(Answer either A or B)
+
+- Focus on revenue & spending
+[ANSWER] [EX] A
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+Does the following relate to the A: House of Representatives or B: Senate?
+(Answer either A or B)
+
+- Provides "advice and consent" on certain presidential decisions
+[ANSWER] [EX] B
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+Does the following relate to the A: House of Representatives or B: Senate?
+(Answer either A or B)
+
+- Handles impeachment
+[ANSWER] [EX] B
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+Does the following relate to the A: House of Representatives or B: Senate?
+(Answer either A or B)
+
+- Majority parties have less authority (than in the other house)
+[ANSWER] [EX] B
+----------------------------------------------------------------------------------
+[QUESTION]
+[TOPIC] NSL 2.1
+
+Does the following relate to the A: House of Representatives or B: Senate?
+(Answer either A or B)
+
+- Focus on foreign policy
+[ANSWER] [EX] B
+----------------------------------------------------------------------------------
